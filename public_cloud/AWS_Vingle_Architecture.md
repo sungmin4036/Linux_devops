@@ -159,3 +159,127 @@ AWS에서 제공시 좋은것
    - 시간이 조금만 지나면 AWS내 많은 리소스 관리 어려워짐
    - AWS CloudFormation을 통해 리소스들을 코드화/ 데이터화
 
+---
+
+ㅁ 마이크로서비스 모범사례
+
+1. API 기반 서비스 인터페이스 및 하위 호환성 유지
+
+API를 통한 서비스별 인터페이스
+
+![image](https://user-images.githubusercontent.com/62640332/155322423-007710cc-d80e-4ab9-895b-6bcb93c9c5ae.png)
+
+각각의 마이크로 서비스 통신을 원할 하게 하기위해서 API를 사용합니다.
+
+![image](https://user-images.githubusercontent.com/62640332/155322529-1684cac6-06c7-46e5-8b20-b3f4ac9707bd.png)
+
+그러면 API는 버전닝을 하는데, 버전이 올라갈수록 기능에 대한 하위 호완성이 중요하게 된다.
+
+![image](https://user-images.githubusercontent.com/62640332/155322672-5a5fc40d-2f43-4fd1-81c3-7492693b18d2.png)
+
+람다에서는 기본적으로 배포시 버전기능이 있다. 버전을 선택하는게 가능. 
+
+![image](https://user-images.githubusercontent.com/62640332/155322758-b86d6dab-05d5-47df-9404-c4eb251deb7c.png)
+
+API Gateway는 스테이징 기능이 있음. 프러덕션 레벨인지 테스트인지 이런것을 스테이징을 별도로 구성가능하며, 
+
+스테이징 변수 할당도 가능하여 스테이지 변수, 람다함수, 스테이지를 잘 조합해서 API 게이트웨이 단에 어떤 식으로 어떤 버전을 배포할수있는지 구성할수 있다.
+
+<br>
+<br>
+<br>
+
+2. 각기 다른 폴리그랏 개발 및 운영 환경
+
+![image](https://user-images.githubusercontent.com/62640332/155323029-ae7f499e-e70e-4679-8251-7306c4264c0b.png)
+
+회사내에서 이런 플랫폼과 아키텍처만 사용해라 등 그런것이 있다. 그러나 뒷단에 DB 변경을 한다거나 nojs, java 같은거와 같은게 필요할때가 있는데 특정적으로 사용하다보면
+
+불편한 경우가 많다. 이러한 다양한 환경을 가질수 있는것을 폴리그랏(Polyglot) 환경이라고 한다.
+
+
+![image](https://user-images.githubusercontent.com/62640332/155323348-aaa3b545-38c1-4bdf-b9e0-fbd8aca12422.png)
+
+기존의 환경에서는 트랜잭션중 하나가 다운되면 전체가 다운 됬지만, 마이크로서비스는 이렇게 되더라도 회원쪽 db만 안되는것이고 다른것은 사용 가능해진다.
+
+서비스 영향이 최소한 된다.
+
+![image](https://user-images.githubusercontent.com/62640332/155323463-40a08d14-fe8e-4f02-94c5-bbf8153362bb.png)
+
+람다에서 Correation ID를 사용하여 환경 변수값들을 http 값처럼 넘겨줘서 잘 따르고 있는지 확인
+
+![image](https://user-images.githubusercontent.com/62640332/155323586-4699c394-719f-4452-bb37-b503474c8477.png)
+
+서비스별 자체 롤백 기능을 가지게 된다면, 각각의 서비스를 상태를 확인 및 관리하는 서비스 필요하게 된다. => Step Functions
+
+![image](https://user-images.githubusercontent.com/62640332/155323649-3fc630e4-79aa-41dc-98d4-7485c621cca0.png)
+
+각각의 마이크로서비스 또는 함수가 트랜잭션이 넘어갈때 문제를 해결해주는 서비스
+
+step 한단계 한단계를 병렬처리를 한다거나, 어떤 함수를 불렀다가 끝나면 다른걸 불르는거와 같은 작은 마이크로서비스를 쉽게연계하여 사용할수 있게 된다.  
+
+![image](https://user-images.githubusercontent.com/62640332/155324102-d678ea19-7b51-40bb-8bec-88e135804986.png)
+
+파란색 step function, 오렌지가 lambda function이며,  람다함수 끝나면 스탭함수가 시작되고 이런식으로 두가지가 연계되어 사용된다.
+
+![image](https://user-images.githubusercontent.com/62640332/155324272-7429ba8e-f925-4a4f-8fdb-0fa893b60620.png)
+
+사진을찍어서 이미지를 S3의 저장소에 올리면, 람다함수가 실행되고, 그 사진을 step function을 시작한다. 
+
+이미지를 인식하는 서비스인 Amazon Rekognition 서비스를 호출하여, 메타데이터 추출하여 dynamodb 에 저장하여 사진의 메타데이터를 보여주는 애플리케이션
+
+이것을 lamda function과 step function을 이용하여 만들어 본다.
+
+![image](https://user-images.githubusercontent.com/62640332/155324622-75cc2051-ae4b-4e27-aaee-d1f26364f5f5.png)
+
+<br>
+<br>
+<br>
+
+3.지속적인 마이크로서비스 모니터링
+
+![image](https://user-images.githubusercontent.com/62640332/155325312-1426cfc8-f55a-4d2b-9fba-03d4ac38d1a0.png)
+
+![image](https://user-images.githubusercontent.com/62640332/155325353-36a2e0a2-691e-4720-a79d-e43c68f99f0b.png)
+
+![image](https://user-images.githubusercontent.com/62640332/155325572-d50813be-fd9c-48fa-9bab-686f27370a8a.png)
+
+![image](https://user-images.githubusercontent.com/62640332/155325646-f88ad3f2-c70d-4f1a-987a-cfc2c3a61ef4.png)
+
+![image](https://user-images.githubusercontent.com/62640332/155325670-5d8cc401-6dbd-4edb-9fa3-a960c4e23f63.png)
+
+<br>
+<br>
+<br>
+
+4. 마이크로서비스별 보안 강화
+
+![image](https://user-images.githubusercontent.com/62640332/155325835-5d8b8a45-cd68-499b-a89b-d6c62a3a63a4.png)
+
+<br>
+<br>
+
+5. API 생태계 확산을 통한 비지니스 창출
+
+![image](https://user-images.githubusercontent.com/62640332/155326057-2c2d91a2-ff52-410d-a721-39d30a08068f.png)
+
+![image](https://user-images.githubusercontent.com/62640332/155326181-fc0a0e80-2b33-4057-9c93-74d84b17b746.png)
+
+<br>
+<br>
+
+6. 기술 너머 조직 변화
+   
+![image](https://user-images.githubusercontent.com/62640332/155326302-5890f9e0-8c81-432e-9cef-ac02f39e3a0a.png)
+
+기존에는 직군별 나눠서 했으나, 
+
+![image](https://user-images.githubusercontent.com/62640332/155326370-42fa8c6e-3106-4c2e-a3ac-90603c2baf1e.png)
+
+7. 자동화(Automation)
+
+![image](https://user-images.githubusercontent.com/62640332/155326553-f6571b43-09a9-4701-9bf7-ea24e1596470.png)
+
+각자의 개발환경과 서비스를 운영하고 배포하는것은 중요하며, aws 에서는 devops의 다양한 도구 지원하고 있다.
+
+![image](https://user-images.githubusercontent.com/62640332/155326602-25190c67-b66e-4060-be66-8988833063b8.png)
