@@ -1,3 +1,6 @@
+![image](https://user-images.githubusercontent.com/62640332/155733448-ba7f5330-1c3c-4578-b470-97663e188ff9.png)
+
+
 ㅁ EC2
 
 : AWS의 대표 서비스입니다. EC2인스턴스를 생성하고 사용하는 것은 간단하지만 보안성을 향상시키려면 몇 가지 고려해야 할 사항들이 있습니다.
