@@ -1,3 +1,7 @@
+![image](https://user-images.githubusercontent.com/62640332/155851480-eab4f536-2f27-471f-970f-c22157a4b03a.png)
+
+
+
 - 마이크로서비스 아키텍처(MSA) 개념 소개
 
 : MSA가 도입되기 전의 모습(Monolithic Architecture), 기존에 우리가 사용하던 전통적인 방식의 개발 방법을 모노리틱 아키텍처 스타일이라고 합니다.
