@@ -280,13 +280,13 @@ aws 는 여러 서비스 통합에 lambda를 활용하며, 다른 여러 서비�
 
 그리고, 고정된 형태의 스키마구조가 아니라 key, value, document 형식으로 데이터 빠르게 처리할 경우 nosql 사용중입니다.
 
-RDS - RDBMS
-Redshift - DW서비스
-ElasticCache - cache 나 In-memory로 사용
-DynamoDB, DocumentDB, Managed Apache Cassandra - nosql 서비스
-Neptune - 데이터 상관관계 관리하는 Graph DB
-timestream - serial 데이터를 저장하고 빠르게 쿼리 가능
-QLDB - 변경 불가능한 원장데이터를 중앙에서 관리
+- RDS - RDBMS
+- Redshift - DW서비스
+- ElasticCache - cache 나 In-memory로 사용
+- DynamoDB, DocumentDB, Managed Apache Cassandra - nosql 서비스
+- Neptune - 데이터 상관관계 관리하는 Graph DB
+- timestream - serial 데이터를 저장하고 빠르게 쿼리 가능
+- QLDB - 변경 불가능한 원장데이터를 중앙에서 관리
 
 ```
 1) OLTP: On-Line Transaction Processing (데이터 갱신위주)
