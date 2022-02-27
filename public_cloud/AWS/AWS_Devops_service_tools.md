@@ -373,3 +373,143 @@ API 서비스의 핵심과 답게 다양한 기능을 제공하며 주요 기능
 - 엔트포인트 노출 방지 역할
 - DDoS 및 명령어 주입 공격으로부터 보호
 - API Gateway 캐시 기능 제공
+
+
+---
+
+
+ECS - docker supported
+
+EKS - kubernetes supported
+
+두 개념 모두 container orchestration service
+
+​
+
+현 직장 업무로 외부 API를 콜하여 적재하는 서비스를 ECS로 등록하여 관리하고 있다. 이에 따라 AWS에서 제공하는 컨테이너 서비스를 전반적으로 살펴보고, ECS와 EKS의 차이를 파악해보고자 한다.
+
+​
+
+아래 그림은 아마존에서 제공하는 컨테이너 서비스를 단계별로 분류해둔 그림이다.
+
+
+AWS Container Support Service
+
+* Hosting : 컨테이너가 실행될 환경(Compatibilities)를 EC2/Fargate로 설정하는것.
+
+1) EC2 : 프로세서, 스토리지, 네트워크에 대한 full control 권한을 가짐
+
+2) Fargate : serverless container compute engine
+
+​
+
+Management단에서 ECS, EKS 두 가지 선택 옵션이 있는데, 어떤 차이가 있는지를 파악하기 위해 좀 더 리서치를 해보았다.
+
+
+Spectrum of Abstraction Level
+
+아마존에서 제공하는 가상화 레벨 도식화를 살펴보면,
+
+- VM단에 해당하는 것이 EC2
+
+- container로 해당하는 것이 EKS, ECS
+
+- Lambda는 function이므로 가장 추상화가 되어있는 서비스
+
+- Fargate는 provider space에 존재(=AWS에서 매니징)하는 서비스
+
+로 정리할 수 있다.
+
+ECS가 EKS보다 좀 더 가상화 레벨이 높은 것으로 분류되어있다.
+
+Fargate는 추후 EKS에서도 지원된다는 점을 미루어보면, 리소스를 직접 Control하는 권한을 개발자 본인이 full로 가져갈지(EC2), AWS에 맡길지(Fargate)에 따라 선택이 가능한 듯 하다.
+
+​
+
+ECS와 EKS의 차이
+
+우선 간단하게 정리하면 ECS는 EKS 대비 AWS 서비스와 자원을 더 활용하고,
+
+EKS는 kubernetes가 지원하는 환경을 다 활용 가능한다는 차이점이 있다.
+
+AWS 공식 독스에서는 ECS가 좀 더 simplicity를 추구가능하다고 표현한다.
+
+주로 가격 정책, 네트워크와 Load Balancing에서 차이를 보인다고 한다.
+
+​
+
+1) 가격 정책
+
+- ECS의 경우 EC2 런치 타입에 따른 추가적인 과금이 없음 (Pay-as-you-go)
+
+- EKS의 경우 추가적인 비용 부담이 있음.
+
+​
+
+2) 네트워크
+
+- ENI (Elastic Network Interface) 할당에 차이가 있음
+
+- EKS는 EC2 instance내 단일 Pod 또는 여러개 Pod를 묶어 IP를 할당 받을 수 있음. 즉 네트워크를 공유
+
+- ECS는 EC2 instance내 task별로 ENI를 할당받음
+
+위 특성 때문에 개발하는 서비스의 컨테이너 사용 갯수가 많을수록 EKS가 효율적일 수 있음.
+
+​
+
+3) Load Balancing
+
+- EKS는 별도로 Proxy를 두어 Pods 로드를 분산
+
+- ECS는 단일 ALB를 사용
+
+EKS의 경우 트래픽이 많아질경우 Node간 latency 늘어난다는 단점이 있다.
+
+​
+
+4) Compatibility
+
+ECS는 AWS-only로 제공되는 서비스이기 때문에 다른 서비스 provider나 on-premise에서도 서비스를 운영하고 싶을 경우 EKS가 나은 선택일 수 있다. EKS는 어떤 infra 환경에서도 실행이 가능하기 때문이다.
+
+---
+
+EC2에 직접 K8s를 설치하는 것과 EKS 차이점.
+ 
+
+[질문]
+
+EC2에 쿠버네티스를 설치해서 사용하는 것이랑 
+
+EKS를 사용하는 것의 주요 차이점, 장단점 등은 어떤 것들이 있을까요?
+
+ 
+
+[답변]
+
+EC2에서 쿠버네티스를 설치해서 사용하실 경우 
+
+쿠버네티스의 마스터 노드에 위치한 
+
+각종 컴포넌트(api server, etcd etc.) 등에 대한 고가용성도 고객이 직접 보장/관리 하셔야 합니다. 
+
+하지만. eks를 사용하시는 경우 싱글태넌트로 고객별로 만들어진
+
+ kubernetes master node를 저희가 직접 고가용성 관리를 하므로 관리 운영 부담이 현저히 줄어듭니다.
+
+
+![image](https://user-images.githubusercontent.com/62640332/155871958-aed6c686-463f-4850-8c89-94f93dc6c1b8.png)
+
+
+
+---
+
+ ECR (EC2 Container Registry) 은 Docker Container 의 이미지를 저장하는 Repository 서비스이다. 기능은 Docker hub 의 Repository 서비스와 동일하다. 특별한건 없다. Docker Private Repository 구축하고 관리 하는 수고를 AWS 에 맡기는 Managed 서비스일 뿐이다. 
+
+
+
+ 장점이라고 한다면,
+
+ Container 이미지를 S3 에 저장하기 때문에 고가용성이 유지되고, AWS IAM 인증을 통해 이미지 push/pull 에 대한 권한 관리가 가능하다는 것이다. 
+
+---
