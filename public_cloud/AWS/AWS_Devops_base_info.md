@@ -1,20 +1,22 @@
-- [전체적인 설명](#전체적인-설명)
-- [stack](#stack)
-- [change set](#change-set)
-- [stack set](#stack-set)
-- [cloudformation](#cloudformation)
-- [Cloud Development Kit](#cloud-development-kit)
-- [CI/CD](#cicd)
-- [AWS Lambda](#aws-lambda)
-- [AWS API Gateway](#aws-api-gateway)
-- [ECS와 EKS의 차이](#ecs와-eks의-차이)
-- [데이터 스토어](#데이터-스토어)
-- [운영상의 복잡성 감소](#운영상의-복잡성-감소)
-- [서버리스 마이크로서비스](#서버리스-마이크로서비스)
-- [Lambda기반 애플리케이션 배포](#lambda기반-애플리케이션-배포)
-- [분산 데이터 관리](#분산-데이터-관리)
-- [분산 모니터링](#분산-모니터링)
+  - [전체적인 설명](#전체적인-설명)
+  - [stack](#stack)
+  - [change set](#change-set)
+  - [stack set](#stack-set)
+  - [cloudformation](#cloudformation)
+  - [Cloud Development Kit](#cloud-development-kit)
+  - [CI/CD](#cicd)
+  - [AWS Lambda](#aws-lambda)
+  - [AWS API Gateway](#aws-api-gateway)
+  - [ECS와 EKS의 차이](#ecs와-eks의-차이)
+  - [데이터 스토어](#데이터-스토어)
+  - [운영상의 복잡성 감소](#운영상의-복잡성-감소)
+  - [서버리스 마이크로서비스](#서버리스-마이크로서비스)
+  - [Lambda기반 애플리케이션 배포](#lambda기반-애플리케이션-배포)
+  - [분산 데이터 관리](#분산-데이터-관리)
+  - [분산 모니터링](#분산-모니터링)
 
+
+  - [MSA 고려사항](#MSA-고려사항)
 ---
 
 ### 전체적인 설명
@@ -1139,3 +1141,179 @@ Amazon QuickSight 는 분석,보고 및 시각화를 위해 AmazonRedshift 에 �
 로그가 S3버킷에 저장되면 로그 데이터를 다른 AWS데이터 서비스(예:AmazonRedshift또는 AmazonEMR)에 로드하여 로그 스트림에 저장된 데이터를 분석하고 이상 항목을 찾을
 수 있습니다.
 
+---
+
+### MSA 고려사항
+
+![image](https://user-images.githubusercontent.com/62640332/156026127-2ac21a29-03d2-45ee-b16c-f97c550ed3da.png)
+
+####ㅁ 단위 서비스로 쪼개기
+
+하나의 거대한 애플리케이션을 어떻게 분리해야 경량화 구조로 바꿀 수 있을까요?
+
+ MSA가 지향하는 서비스 간 느슨한 결합(Loose Coupling)과 높은 응집성(High Cohesion)을 가지면서도 상호의존 없이 단일목적 기능을 수행하도록 하려면 어떻게 해야 할까요?
+
+도메인 주도 설계(Domain Driven Design)가 해답이 될 수 있습니다. 
+
+이해를 돕기 위해 많이 알려진 객체지향 프로그래밍(Object Oriented Programming)의 '객체(Object)'와 도메인 주도 설계의 '도메인(Domain)'을 들어 설명하겠습니다. 
+
+객체와 도메인 모두 기본 사상은 비슷하지만 대상 범위에 차이가 있습니다. 
+
+객체는 추상화 또는 구체화할 수 있는 특정 요소만을 표현하는 반면, 행위는 별개로 다룹니다. 
+
+그러나 도메인은 행위를 포함하여 소프트웨어 이용자가 다루는 모든 것을 설명합니다. 
+
+여기서 모든 것이 도메인이고 표현하는 방법을 모델(Model)이라 부르며 사용자 입장이나 관점 등의 상황에 따라 구분짓는 것을 `컨텍스트(Context)`라고 합니다. 
+
+`바운디드 컨텍스트(Bounded Context)`는 컨텍스트에 대한 업무 범위를 정의합니다. 또한 컨텍스트 맵(Context Map)을 통해 바운디드 컨텍스트 간의 관계를 정합니다.
+
+보통 도메인 주도 설계는 업무(도메인) 전문가와 개발자가 함께 참여해 워크숍을 진행하면서 서비스 분리 전략을 수립합니다. 
+
+이때 중요한 것은 의사소통입니다. 용어가 통일되어 있지 않으면 혼란이 발생해 동일한 용어를 서로 다르게 해석할 수 있습니다. 
+
+이를 방지하기 위해 업무 위주의 보편 언어(Ubiquitous Language)를 사용합니다. 용어가 정리될 때 용어집(Glossary)으로 관리하면 소통이 원활해질 수 있습니다.
+
+![image](https://user-images.githubusercontent.com/62640332/156026428-3d303eb8-47d2-4ae8-8648-1c1089920e43.png)
+
+- Value Object: 비즈니스 용어를 나타내는 불변 객체
+- Entity: 속성이 아닌 식별성을 기준으로 정의되는 도메인 객체, 여러 Value Object로 구성(예: DB의 한 개 row)
+- Service: 도메인 객체에 포함할 수 없는 오퍼레이션 연산을 갖는 객체
+- Aggregate: 연관된 Value Object와 Entity의 묶음
+- Factory: 복잡한 Entity, Aggregate를 캡슐화하여 여러 객체를 동시에 생성
+- Repository: Aggregate의 영속성 및 등록·수정·삭제·조회 시 일관성 관리
+
+<br>
+<br>
+
+도메인 모델은 UML(Unified Modeling Language)이나 BPM(Business Process Management)으로 전체적인 흐름을 표현하는 메인 모델 도메인을 먼저 설계한 후 
+
+이를 서브 도메인으로 분리하고 바운디드 컨텍스트와 컨텍스트 맵을 통해 모델 간 연관 관계를 정의합니다.
+
+결국 MSA 구조는 시스템 개발·운영 조직과 밀접한 관련이 있습니다. 
+
+도메인 주도 설계를 통해 경량화 서비스로 분리하고 업무 범위에 따른 그룹핑을 할 때 주의할 점은 기업의 조직구조와 업무단위를 고려해야 한다는 사실입니다. 
+
+그래야만 애플리케이션 구조의 복잡성을 낮추고 개발 생산성은 높일 수 있습니다. 
+
+이와 같이 도메인 주도 설계를 활용하여 하나의 애플리케이션을 단위서비스로 분리할 수 있으나 가장 올바른 방향은 애플리케이션 개발 시작단계부터 MSA 및 도메인 주도 설계를 고려하는 것입니다.
+
+<br>
+<br>
+
+#### ㅁ분리된 서비스의 통합 관리 방안 수립
+
+애플리케이션을 업무 단위로 분리하였다면 경량화된 서비스 간 통신을 가능하게 하고 전체 서비스를 관리하기 위한 서비스 메쉬(Service Mesh) 기반의 아우터 아키텍처(Outer Architecture)를 선정해야 합니다. 
+
+MSA가 갖춰야 할 서비스 메쉬의 주요 기능은 다음과 같습니다.
+
+- Configuration Management: 서비스의 재빌드·재부팅 없이 설정사항을 반영(Netflix Archaius, Kubernetes Configmap)
+- Service Discovery: MSA 기반 서비스 배포 시 서비스 검색 및 등록(Netflix Eureka, Kubernetes Service, Istio)
+- Load Balancing: 서비스 간 부하 분산(Netflix Ribbon, Kubernetes Service, Istio)
+- API Gateway: 클라이언트 접근 요청을 일원화(Netflix Zuul, Kubernetes Ingress)
+- Service Security: 마이크로서비스 보안을 위한 심층 방어메커니즘 적용(Spring Cloud Security)
+- Centralized Logging: 서비스별 로그의 중앙집중화(ELK Stack)
+- Centralized Monitoring: 서비스별 메트릭 정보의 중앙집중화(Netflix Spectator, Heapster)
+- Distributed Tracing: 마이크로서비스 간의 호출 추적(Spring Cloud Sleuth, Zipkin)
+- Resilience & Fault Tolerance: MSA 구조에서 하나의 실패한 서비스가 체인에 연결된 전체 서비스들에 파급 효과를 발생시키지 않도록 하기 위한 계단식 실패 방지 구조(Netflix Hystrix, Kubernetes Health check)
+- Auto-Scaling & Self-Healing: 자동 스케일링, 복구 자동화를 통한 서비스 관리 효율화
+- Build/Deploy Automation: 서비스별 빌드·배포 자동화(Netflix Spinnaker, Kubernetes Scheduler, Jenkins)
+- Test Automation: 서비스에 대한 테스트 자동화
+- Image Repository: 컨테이너 기반 서비스 배포를 위한 이미지 저장소
+
+서비스 메쉬의 적용 방안으로는
+
+   1) REST API 호출 방식으로 서비스를 결합시키는 스프링 클라우드(Spring Cloud) 기반 넷플릭스 OSS
+   2) 쿠버네티스(Kubernetes) 기반 클라우드 네이티브(Cloud Native) 서비스
+   3) 사이드카 프록시(Sidecar Proxy) 패턴의 쿠버네티스 기반 이스티오(Istio) 솔루션
+
+등을 검토할 수 있습니다. 
+
+본 아티클에서는 이들 중 스프링 클라우드와 사이드카 프록시를 기반으로 하는 서비스 메쉬 구현에 대해 간략히 소개하겠습니다.
+
+
+- 스프링 클라우드 기반 유레카(Eureka)
+
+: 유레카는 단위 서비스들에 대하여 동적으로 서비스 등록(Service Registry) 및 서비스 디스커버리(Service Discovery)를 수행하고 로드밸런싱을 통해 서비스간 통신의 부하 분산 기능을 제공합니다.
+
+![image](https://user-images.githubusercontent.com/62640332/156027109-eafd83a1-880e-41c7-82b3-88fccc5bb6a6.png)
+
+[그림 3]은 유레카를 활용한 서비스 부하 분산 처리 방식을 보여주고 있습니다.
+
+애플리케이션 서비스가 시작될 때 유레카 서버의 레지스트리에 상태 정보를 등록합니다. 
+
+각 서비스는 설정된 간격(기본 30초)마다 하트비트(Heartbeat) 방식으로 상태 정보를 유레카 서버로 전송하여 서비스 상태를 점검(Health check)합니다. 
+
+만약 하트비트가 수신되지 않은 경우 레지스트리에서 해당 서비스 정보가 제거됩니다. 
+
+유레카에서의 부하 분산은 클라이언트-사이드(Client-side) 방식의 리본(Ribbon)을 사용합니다.
+
+
+- 사이드카 프록시 패턴으로 서비스 메쉬 구현
+
+: 사이드카 방식은 본래의 애플리케이션 서비스 앞단에 서비스간 통신 제어를 담당하는 경량화된 프록시를 배치하는 디자인 패턴입니다. 
+
+기본 애플리케이션을 수정하지 않고도 서비스간 통신에 해당하는 추가 기능을 수행할 수 있으며 서비스 모니터링은 시스템 매트릭(System Metric)과 같이 리소스 정보를 공유할 수 있는 구조로 개발 가능한 장점이 있습니다. 
+
+대표적인 사이드카 방식의 오픈소스 구현체로 Google, IBM, Lyft에서 주도하는 쿠버네티스 기반 솔루션인 이스티오가 있습니다.
+
+![image](https://user-images.githubusercontent.com/62640332/156027284-8527c8f7-6fe2-4729-9901-89a9dac7b7f9.png)
+
+[그림 4]는 이스티오의 작동 방식을 나타내고 있습니다. 
+
+데이터 플레인(Data plain)에서 엔보이(Envoy)가 사이드카로 배포되어 서비스의 인/아웃 통신 트래픽을 제어합니다. 
+
+서비스 디스커버리 수행 방식은 컨트롤 플레인(Control Plain)의 파일럿(Pilot)이 서비스 레지스트리 정보를 가지고 있고 엔보이가 해당 레지스트리 정보를 참고하여 다른 서비스의 엔드 포인트(end point)로 접근하게 됩니다.
+
+믹서(Mixer)는 접근 정책에 대한 통제와 서비스 모니터링을 위한 매트릭(Metric) 지표를 수집합니다. 
+
+시타델(Citadel)은 인증·인가와 같은 보안을 담당하는 모듈로 TLS 인증서를 관리합니다.
+
+사이드카 프록시 패턴은 각 서비스 인스턴스 별로 프록시 서비스가 별도로 필요하기 때문에 서비스 인스턴스가 2배로 소요되는 단점이 있지만 프록시에 공통 기능을 별도로 구현함으로써 재사용성을 높여 비즈니스 서비스 개발에 집중할 수 있다는 이점이 있습니다. 
+
+서비스 메쉬 관련 자세한 내용은 에스코어가 이전에 발행한 다음의 MSA 관련 아티클을 참고하시기 바랍니다.
+
+```
+- 넷플릭스로 알아보는 MSA   
+https://www.samsungsds.com/kr/insights/msa_and_netflix.html
+
+
+- MSA와 분산 아키텍처 수용을 위한 방법: 서비스 메쉬와 이스티오
+https://www.samsungsds.com/kr/insights/service_mesh.html
+```
+
+#### ㅁ 데이터 트랜잭션 관리
+
+모놀리식 아키텍처로 개발된 애플리케이션은 하나의 통합 데이터베이스를 사용하며 데이터 일관성을 위한 트랜잭션 관리 기능은 DBMS가 제공합니다. 
+
+반면 MSA 구조에서 분산된 서비스 간의 트랜잭션 관리는 매우 까다로운 영역입니다. 이의 해결 방안을 간략히 소개합니다.
+
+- 2PC(2 Phase Commit)
+
+: 2PC는 다른 용어로 TCC(Try Confirm Cancel)라고도 합니다. 동작은 준비와 처리, 2단계로 실행합니다.
+
+   1) 중앙의 코디네이터 제어 노드에서 글로벌 트랜잭션을 생성하여 대상 서비스들에게 잠금(Lock)을 요청한 후 모든 서비스로부터 응답을 받습니다.    
+   2) 모든 서비스에게 커밋을 전송한 후 서비스로부터 결과를 응답받습니다.
+
+2PC는 매우 강력한 일관성 프로토콜을 제공하는 반면 트랜잭션을 요청 받은 서비스로부터 모두 완료 회신을 받기 전까지는 전체 서비스에 잠금(Lock)이 걸립니다. 
+
+이로 인해 코디네이터 노드 혹은 대상 트랜잭션 노드가 다운될 경우 전체 시스템에 장애를 유발할 수 있어 MSA 구조에서는 그다지 추천되지 않습니다.
+
+- SAGA 패턴
+
+: SAGA 패턴은 SEC(Saga Execution Coordinator)가 로컬 트랜잭션을 관리해주는 방식으로 하나의 로컬 트랜잭션 단위로 실행됩니다.
+
+트랜잭션이 종료될 때 완료 이벤트를 수신하고 순차적으로 다음 로컬 트랜잭션을 실행하는 방식입니다. 
+
+이 때 중앙의 SEC 노드가 다음에 실행할 로컬 트랜잭션을 결정합니다.
+
+트랜잭션 실행 중 실패가 발생하면 원래 트랜잭션에 대한 로그를 남기고 취소 상태를 설정한 후 보상 트랜잭션을 실행합니다.
+
+만일 보상 트랜잭션마저 실패한다면, 일정 횟수만큼 혹은 일정기간 동안 보상 트랜잭션을 반복적으로 재시도하게 됩니다. 
+
+각 마이크로서비스는 자신의 로컬 원자적 트랜잭션(Atomic Transaction)에만 집중하기 때문에 보류(Pending) 상태가 없습니다. 
+
+따라서 오래 걸리는(Long-Lived) 트랜잭션에 적합합니다.
+
+SAGA 방식은 시스템이 복잡한 경우 이벤트 메시지 관리가 어렵기 때문에 적용에 앞서 비즈니스 로직상 꼭 필요한지를 충분히 검토해야 합니다. 
+
+가장 좋은 방법은 앞서 소개한 도메인 주도 설계를 통한 서비스 분리·그룹화 시 트랜잭션 관리 측면도 함께 고려해 적절한 방안을 선택하는 것입니다.
