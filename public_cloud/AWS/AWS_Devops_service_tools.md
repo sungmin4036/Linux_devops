@@ -1,10 +1,23 @@
 - [전체적인 설명](#전체적인-설명)
-      - [stack](#stack)
-      - [change set](#change-set)
-      - [stack set](#stack-set)
+- [stack](#stack)
+- [change set](#change-set)
+- [stack set](#stack-set)
+- [cloudformation](#cloudformation)
+- [Cloud Development Kit](#cloud-development-kit)
+- [CI/CD](#cicd)
+- [AWS Lambda](#aws-lambda)
+- [AWS API Gateway](#aws-api-gateway)
+- [ECS와 EKS의 차이](#ecs와-eks의-차이)
+- [데이터 스토어](#데이터-스토어)
+- [운영상의 복잡성 감소](#운영상의-복잡성-감소)
+- [서버리스 마이크로서비스](#서버리스-마이크로서비스)
+- [Lambda기반 애플리케이션 배포](#lambda기반-애플리케이션-배포)
+- [분산 데이터 관리](#분산-데이터-관리)
+- [분산 모니터링](#분산-모니터링)
+
 ---
 
-# 전체적인 설명
+### 전체적인 설명
 
 - CI/CD : 개발자가 코드 변경사항을 중앙 repository에 정기적으로 병합하고, 빌드와 테스트 과정을 거쳐 프러덕션에 릴리스하는 각 과저을 포함한다.
 - IaC: 버전 제어, 지속적 통합과 같은 코드 및 소프트웨어 개발 기법을 사용하여 인프라를 프로비저닝하고 관리
@@ -82,14 +95,14 @@ AWS resource를 모델링하고 설정하여 리소스 관리에 대한 신경�
 
 ![image](https://user-images.githubusercontent.com/62640332/155369312-a21a1a43-31da-4332-a2c0-09b4c5df9e15.png)
 
-#### stack
+### stack
 
 ![image](https://user-images.githubusercontent.com/62640332/155369769-f6dc5735-d9da-4447-9648-7cab30c8b1e5.png)
 
-#### change set
+### change set
 ![image](https://user-images.githubusercontent.com/62640332/155369871-0d763734-b57b-4792-be21-ae3aa4fbdb07.png)
 
-#### stack set
+### stack set
 ![image](https://user-images.githubusercontent.com/62640332/155369990-f010aad0-9fd8-4391-86a7-2e225a1297ad.png)
 
 이미 aws 해비 사용자라면 , 여러개의 개정을 가지고, 하나의 개정에서 여러개의 리전 사용할것이다. 이떄 aws cloud formation을 어떻게 확장해서 사용할수 있을까?
@@ -106,6 +119,7 @@ statck set 들을 위한 stack을 생성 가능하다. 스택셋 만든후에는
 
 해당 툴 사용하면 탬플릿 배포전에 에러를 인지하고 수정이 가능해진다.
 
+### cloudformation
 ![image](https://user-images.githubusercontent.com/62640332/155370837-e0326487-1ab7-4e2a-b791-5768b721e7b8.png)
 
 
@@ -135,8 +149,8 @@ db의 패스워드와 같이 중요정보는 하드코딩하지 않는다. 이�
 ![image](https://user-images.githubusercontent.com/62640332/155371822-f02b0e2b-0c5f-41c2-b2f8-43cbf2ae343c.png)
 
 <br>
-<br>
-<br>
+
+### Cloud Development Kit
 
 ![image](https://user-images.githubusercontent.com/62640332/155372016-4f2fb894-7283-48ee-8496-199c7fb340d8.png)
 
@@ -195,8 +209,8 @@ CDK는 프로그래밍 언어의 모든 기능을 활용하여 aws 인프라를 
 발생할수 있다. ==> 사용자에게 적합한 툴 사용하면 된다.
 
 <br>
-<br>
-<br>
+
+### CI/CD
 
 ![image](https://user-images.githubusercontent.com/62640332/155470896-aa9e8c05-adf3-46ec-9b15-ae2902a62b37.png)
 
@@ -358,7 +372,7 @@ codeDeploy 에도 appspec 파일 존재하며, 해당 파일 배포 진행방식
 <br>
 <br>
 
-ㅁ AWS Lambda
+### AWS Lambda
 
 AWS의 대표적인 서버리스 컴퓨팅 서비스인 Lambda는 완전 관리형 컴퓨팅 서비스로 상태 비저장 코드를 실행합니다.
 
@@ -373,7 +387,7 @@ AWS의 대표적인 서버리스 컴퓨팅 서비스인 Lambda는 완전 관리�
 <br>
 
  
-ㅁ AWS API Gateway
+### AWS API Gateway
 
 : API Gateway는 마이크로서비스를 정의하는 API를 처리하는 핵심 Component로 단일 접점 역할을 담당하여 외부로 엔드포인트 노출을 차단할 수 있습니다.
 
@@ -389,6 +403,7 @@ API 서비스의 핵심과 답게 다양한 기능을 제공하며 주요 기능
 
 ---
 
+### ECS와 EKS의 차이
 
 ECS - docker supported
 
@@ -438,7 +453,7 @@ Fargate는 추후 EKS에서도 지원된다는 점을 미루어보면, 리소스
 
 ​
 
-ECS와 EKS의 차이
+
 
 우선 간단하게 정리하면 ECS는 EKS 대비 AWS 서비스와 자원을 더 활용하고,
 
@@ -527,7 +542,7 @@ EC2에서 쿠버네티스를 설치해서 사용하실 경우
 ---
 
 
-ㅁ 데이터 스토어
+### 데이터 스토어
 
 데이터 스토어는 마이크로서비스에 필요한 데이터를 유지하는 데 사용됩니다.
 
@@ -596,7 +611,8 @@ DynamoDB 는 실제 트래픽 패턴에 대응하여 사용자 대신 프로비�
 
 ---
 
-ㅁ 운영상의 복잡성 감소
+### 운영상의 복잡성 감소
+
 
 앞에서 설명한 아키텍처에서는 다양한 관리형 서비스를 사용하고 있지만,일부 고객은 여전히 EC2인스턴스를 운영하기도 합니다.
 
@@ -649,7 +665,7 @@ APIGateway 는 먼저 요청이 엣지 로케이션 또는 리전별 엣지 캐�
 
 ---
 
-ㅁ 서버리스 마이크로서비스
+### 서버리스 마이크로서비스
 
 ```
 AWSLambda 를 사용하면 서버를 프로비저닝하거나 관리하지 않고도 코드를 실행할 수 있습니다.
@@ -665,7 +681,8 @@ Lambda 를 사용하면 사실상 모든 유형의 애플리케이션 또는 백
 
 ---
 
-ㅁ Lambda기반 애플리케이션 배포
+### Lambda기반 애플리케이션 배포
+
 AWSCloudFormation 을 사용하여 서버리스 애플리케이션을 지정,배포 및 구성할 수 있습니다.
 
 ```
@@ -798,7 +815,7 @@ EC2인스턴스에서 실행되는 에이전트는 서버를 시작하는 동안
 ---
 
 
-ㅁ 분산 데이터 관리
+### 분산 데이터 관리
 
 일반적으로 대규모 관계형 데이터베이스에서 모놀리식 애플리케이션을 지원하여 모든 애플리케이션 구성 요소에 공통적으로 적용되는 단일 데이터 모델을 정의하게 됩니다.
 
@@ -983,7 +1000,8 @@ StepFunctions 는 워크플로를 작성하기 위해 AmazonStatesLanguage(ASL)�
 
 ---
 
-ㅁ 분산 모니터링
+### 분산 모니터링
+
 마이크로서비스 아키텍처는 모니터링해야 하는 다양한 분산 부분으로 구성되어 있습니다.
 
 ```
