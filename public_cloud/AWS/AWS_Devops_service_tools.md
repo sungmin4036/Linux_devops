@@ -1,4 +1,12 @@
-- CI/CD : 개발자가 코드 변경사항을 중앙 repository에 정기적으로 벙합하고, 빌드와 테스트 과정을 거쳐 프러덕션에 릴리스하는 각 과저을 포함한다.
+[전체적인 설명](#개요)
+    [stack](#stack)
+
+
+---
+
+#개요
+
+- CI/CD : 개발자가 코드 변경사항을 중앙 repository에 정기적으로 병합하고, 빌드와 테스트 과정을 거쳐 프러덕션에 릴리스하는 각 과저을 포함한다.
 - IaC: 버전 제어, 지속적 통합과 같은 코드 및 소프트웨어 개발 기법을 사용하여 인프라를 프로비저닝하고 관리
 
 ![image](https://user-images.githubusercontent.com/62640332/155364530-06abcc20-8a38-4274-a025-9ca8028b445a.png)
@@ -73,6 +81,8 @@ AWS resource를 모델링하고 설정하여 리소스 관리에 대한 신경�
 - 아웃풋은 리소스가 프로비저닝된 후에도 도출될수 있는 값
 
 ![image](https://user-images.githubusercontent.com/62640332/155369312-a21a1a43-31da-4332-a2c0-09b4c5df9e15.png)
+
+#stack
 
 ![image](https://user-images.githubusercontent.com/62640332/155369769-f6dc5735-d9da-4447-9648-7cab30c8b1e5.png)
 
