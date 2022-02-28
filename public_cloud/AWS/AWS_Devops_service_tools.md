@@ -1,7 +1,7 @@
 - [전체적인 설명](#전체적인-설명)
-- [stack](#stack)
-- [change set](#change-set)
-- [stack set](#stack-set)
+      - [stack](#stack)
+      - [change set](#change-set)
+      - [stack set](#stack-set)
 ---
 
 # 전체적인 설명
@@ -82,14 +82,14 @@ AWS resource를 모델링하고 설정하여 리소스 관리에 대한 신경�
 
 ![image](https://user-images.githubusercontent.com/62640332/155369312-a21a1a43-31da-4332-a2c0-09b4c5df9e15.png)
 
-# stack
+#### stack
 
 ![image](https://user-images.githubusercontent.com/62640332/155369769-f6dc5735-d9da-4447-9648-7cab30c8b1e5.png)
 
-# change set
+#### change set
 ![image](https://user-images.githubusercontent.com/62640332/155369871-0d763734-b57b-4792-be21-ae3aa4fbdb07.png)
 
-# stack set
+#### stack set
 ![image](https://user-images.githubusercontent.com/62640332/155369990-f010aad0-9fd8-4391-86a7-2e225a1297ad.png)
 
 이미 aws 해비 사용자라면 , 여러개의 개정을 가지고, 하나의 개정에서 여러개의 리전 사용할것이다. 이떄 aws cloud formation을 어떻게 확장해서 사용할수 있을까?
