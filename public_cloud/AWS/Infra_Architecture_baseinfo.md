@@ -43,7 +43,7 @@
 - 캐싱 및 컨텐츠 전달을 통한 API 성능 향상
 
 
-##### API Gateway
+#### API Gateway
 Amazon API Gateway REST API는 리소스와 메소드로 구성됩니다. 
 
 리소스는 앱이 리소스 경로 (예 : / tickets)를 통해 액세스 할 수있는 논리적 개체입니다. 
@@ -59,7 +59,7 @@ API Gateway를 사용하면 Lambda 함수를 사용하여 각 메소드를 백�
 <br>
 <br>
 
-##### Amazon CloudWatch
+#### Amazon CloudWatch
 
 Amazon API Gateway는 Amazon CloudWatch와 완벽하게 통합되어 API Gateway에서 원시 데이터를 수집하여 API 실행 모니터링을 위한 거의 실시간으로 읽을 수 있는 실시간 지표로 처리합니다. 
 
@@ -70,7 +70,7 @@ API Gateway는 구성 가능한 보고서 및 디버깅을 위한 AWS X-Ray 추�
 <br>
 <br>
 
-##### API 인증
+#### API 인증
 
 API의 일부로 생성 한 각 리소스 / 메소드 조합에는 AWS IAM 정책에서 참조 할 수 있는 고유한 특정 Amazon 리소스 이름 (ARN)이 부여됩니다.
 Amazon API Gateway에서 API에 권한을 추가하는 일반적인 방법에는 세 가지가 있습니다.
@@ -86,7 +86,7 @@ Amazon API Gateway에서 API에 권한을 추가하는 일반적인 방법에는
 <br>
 <br>
 
-##### Amazon CloudFront
+#### Amazon CloudFront
 
 각 Amazon API Gateway 배포에는 기본적으로 Amazon CloudFront 배포가 포함됩니다. 
 
@@ -105,7 +105,7 @@ Amazon API Gateway를 사용하여 선택적인 메모리 캐시에 응답을 �
 <br>
 <br>
 
-##### 액세스 제한
+#### 액세스 제한
 Amazon API Gateway는 API 키 생성 및 이러한 키와 구성 가능한 사용 계획의 연관을 지원합니다. 
 
 Amazon CloudWatch로 API 키 사용을 모니터링 할 수 있습니다.
@@ -114,7 +114,7 @@ API Gateway는 API의 각 메서드에 대한 제한, 속도 제한 및 버스�
 
 Amazon API Gateway와 함께 AWS WAF (Web Application Firewall)를 사용하여 API를 공격으로부터 보호 할 수 있습니다.
 
-###### 서버리스 데이터 스토리지 옵션
+#### 서버리스 데이터 스토리지 옵션
 
 - Amazon S3는 업계 최고의 확장성, 데이터 가용성, 보안 및 성능을 제공하는 객체 스토리지 서비스입니다.
   
@@ -132,7 +132,7 @@ IoT 장치, IT 시스템 및 스마트 산업 기계의 증가에 따라 시간�
 
 Amazon QLDB는 모든 애플리케이션 데이터 변경 사항을 추적하고 시간이 지남에 따라 완전하고 검증 가능한 변경 기록을 유지합니다.
 
-##### 비 서버리스 데이터 스토리지 옵션
+#### 비 서버리스 데이터 스토리지 옵션
 
 - Amazon Relational Database Service (Amazon RDS)는 사용 가능한 엔진 (Amazon Aurora, PostgreSQL, MySQL, MariaDB, Oracle 및 SQL Server)을 사용하여 관계형 데이터베이스를 보다 쉽게 설정, 운영 및 확장 할 수 있는 관리 형 웹 서비스입니다.
   
