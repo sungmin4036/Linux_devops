@@ -6,7 +6,6 @@
 
 - [서비스 메쉬의 핵심, 사이드카(Sidecar) 패턴](#서비스-메쉬의-핵심,-사이드카(Sidecar)-패턴)
 
-- [이스티오(Istio)](#ㅁ-이스티오(Istio))
 
 - [부하분산과 트래픽 관리](#ㅁ-부하분산과-트래픽-관리)
 
@@ -15,6 +14,8 @@
 - [모니터링](#ㅁ-모니터링)
 
 - [서비스 메쉬 적용 시 고려사항](#ㅁ-서비스-메쉬-적용-시-고려사항)
+
+- [이스티오(Istio)](#ㅁ-이스티오(Istio))
 ---
 
 #### 들어가며
@@ -134,22 +135,7 @@ ESB를 활용하는 SOA와 달리 마이크로서비스 아키텍처는 서비�
 
 ![image](https://user-images.githubusercontent.com/62640332/156036140-df7d32e7-3860-4ef8-9fc6-40c31afa1aec.png)
 
-##### ㅁ 이스티오(Istio)
-쿠버네티스 기반의 서비스 메쉬, 이스티오
 
-서비스 메쉬의 기본 아키텍처는 서비스 간 직접 호출 대신 앞에서 언급한 경량화된 사이드카 패턴의 프록시를 배치하여 통신합니다. 
-
-이런 서비스 메쉬 기술의 대표적인 구현체가 이스티오입니다. 
-
-Google, IBM, Lyft 등이 참여하는 오픈소스 프로젝트로 2018년 일반에 공개된 이스티오는 Spring Cloud Netflix와 많은 유사점이 있습니다. 
-
-하지만 Java에 국한된 Spring Cloud Netflix와 달리 플랫폼 영역에서 동작하기 때문에 개발 언어와 무관하게 사용할 수 있습니다.
-
-무엇보다 쿠버네티스와 클라우드 기반에 적합하여 이미 Red Hat OpenShift, VMware Tanzu 등 PaaS 플랫폼의 서비스 메쉬로 선택되기도 하였습니다. 
-
-컨테이너 환경에서 MSA 상의 분산 아키텍처를 수용하기 위한 노력이 더해지면서 이스티오에 대한 세간의 관심이 높아지는 추세입니다.
-
-![image](https://user-images.githubusercontent.com/62640332/156036189-4fecb61b-2478-484c-aaa0-b8facf7ab960.png)
 
 
 ##### ㅁ 부하분산과 트래픽 관리
@@ -200,5 +186,215 @@ TLS 통신을 위한 인증서와 키는 시타델에서 관리합니다.
    - 사이드카 컨테이너 수 증가: 각 서비스는 서비스 메쉬의 사이드카 프록시를 통해 호출되므로 개별 프록시 수가 증가하게 됩니다. 이에 따른 부하로 서비스 운영에 문제가 발생할 가능성이 있는지에 대해 아키텍처 구조 측면에서 사전에 검토해야 합니다.
    - 기술력의 미성숙: 이스티오는 빠르게 발전하고 있으나 아직은 새롭고 미성숙한 기술에 속합니다. 또한 많은 기업이 서비스 메쉬에 대한 경험이 없는 실정입니다.
 
+##### ㅁ 이스티오(Istio)
+쿠버네티스 기반의 서비스 메쉬, 이스티오
 
-출처] https://www.samsungsds.com/kr/insights/service_mesh.html
+서비스 메쉬의 기본 아키텍처는 서비스 간 직접 호출 대신 앞에서 언급한 경량화된 사이드카 패턴의 프록시를 배치하여 통신합니다. 
+
+이런 서비스 메쉬 기술의 대표적인 구현체가 이스티오입니다. 
+
+Google, IBM, Lyft 등이 참여하는 오픈소스 프로젝트로 2018년 일반에 공개된 이스티오는 Spring Cloud Netflix와 많은 유사점이 있습니다. 
+
+하지만 Java에 국한된 Spring Cloud Netflix와 달리 플랫폼 영역에서 동작하기 때문에 개발 언어와 무관하게 사용할 수 있습니다.
+
+무엇보다 쿠버네티스와 클라우드 기반에 적합하여 이미 Red Hat OpenShift, VMware Tanzu 등 PaaS 플랫폼의 서비스 메쉬로 선택되기도 하였습니다. 
+
+컨테이너 환경에서 MSA 상의 분산 아키텍처를 수용하기 위한 노력이 더해지면서 이스티오에 대한 세간의 관심이 높아지는 추세입니다.
+
+![image](https://user-images.githubusercontent.com/62640332/156036189-4fecb61b-2478-484c-aaa0-b8facf7ab960.png)
+
+
+
+MicroService Architecture 시스템의 서비스간 통신이 Mesh Network 형태를 띄는것에 빗대어 명명
+MSA 시스템이 커지고 서비스가 점점 증가하고 관리가 어려워지고.. 통신, 메트릭, 보안 등등 서비스간의 상호 동작이 복잡해지고 있다.
+
+### A. 서비스가 몇개더라?
+
+- 몇개의 서비스가 있지?
+- 서비스 당 인스턴스는 몇개나 존재하지?
+- 서비스 인스턴스에 로드밸런싱은 어떻게 하지?
+- 잘 떠있나?
+
+### B. 저기서 장애가!
+
+A -> B -> 외부 API
+
+- 외부 API 장애 start
+- B: 타임아웃 예정 스레드 증가
+- A: 그에 따른 B에 대한 타임아웃을 기다리는 스레드 증가
+
+어딘가에서 A를 호출하고 있다면? 쾅~ 장애 전파
+
+### 문제 해결
+
+A를 풀자 - Service Discovery Pattern
+
+- Registry에서 각 서비스 인스턴스 정보 관리
+- 인스턴스 정보를 꺼내서 로드밸런싱!
+- Netflix Eureka + ribbon 조합
+
+
+B를 풀자 - Circuit Breaker Pattern
+
+- 일정 수치 이상 에러 발생 -> fallback method 실행
+- 장애 전파 차단 및 전체 시스템 보호
+- Netflix Hystrix
+
+이정도면 ?
+위 해결법을 적용하면 꽤 많이 좋아질 수 있다. 그러나
+
+이것들을 적용하려면 개발자가 다 해야한다.
+
+결국 내 애플리케이션이 위를 지원해야하고, 또 다른 애플리케이션도 모두 지원되어야 한다.
+
+내 바람대로 동작 할 소프트웨어가 전부 구축 되어야 한다.
+
+이를 인프라 레벨에서 컨트롤 할 수 있다면 좋지 않을까
+
+즉 Service Mesh란, software적 접근이 아닌 인프라 레벨에서 서비스간 통신 및 그 외 여러 부분들을 담당하고 관리하자는 컨셉이다. 그럼 어떤식으로 인프라 레벨에서 이를 관리할까
+
+#### Proxy
+
+```
+프록시(Proxy)란 "대신" 이라는 의미를 가지고 있습니다. 프로토콜에 이썽서 대리 응답 등에서 사용하는 개념으로, 보안상의 문제로 직접 통신을 주고 받을 수 없는 사이에서
+프록시를  이용해서 중계를 하는 개념
+```
+
+Service Mesh 컨셉은 서비스 간 호출의 경우 / 서비스간 라우팅의 경우 직접 호출하는 것이 아닌 프록시를 두고 아래와 같이 진행한다.
+
+![image](https://user-images.githubusercontent.com/62640332/156369706-5590495c-3f3d-4282-82e4-b3c1199b96d7.png)
+
+이를 통해 각 서비스로 들어오는 트래픽을 proxy가 통제하고 차단 할 수 있다. 위에서 B상황의 경우 circuit breaking을 이 proxy가 행할 수 있다.
+
+#### Data Plane & Control Plane
+
+서비스의 증가하면 프록시 수도 증가하게 된다. 프록시 수의 증가는 또다시 관리 포인트에 대한 비용을 생성한다.
+
+이 문제를 해결하기 위해 각 프록시에 대한 config 정보를 중앙에서 컨트롤 하는 구조를 취해야한다.
+
+![image](https://user-images.githubusercontent.com/62640332/156370087-01ad6d41-6a3d-4deb-ba48-c735193203de.png)
+
+
+
+Data Plane은 각 프록시들로 이루어져 config에 따라 트래픽을 컨트롤 하는 부분을 말하고,
+
+Control Plane은 Data plane의 config 값들을 저장하고, 프록시들에 이를 전달하는 컨트롤러 역할을 한다.
+
+#### Envoy Proxy
+Istio는 envoy 프록시를 사용한다. 이는 Lyft사에 의해 개발 되었으며 다양한 기능을 제공한다.
+
+- TCP, HTTP1, HTTP2, gRPC protocol 지원
+- TLS client certification
+- L7 라우팅 지원 및 URL 기반, 버퍼링, 서버간 부하 분산량 조절
+- Auto retry / Circuit Breaker 지원 / 다양한 로드밸런싱 기능 제공
+- Zipkin을 통한 분산 트랜잭션 성능 측정 제공
+- Dynamic configuration 지원, 중앙 레지스트리에 설정 및 설정 정보를 동적으로 읽어옴
+- MongoDB에 대한 L7 라우팅 기능
+
+서비스들은 Envoy proxy와 함께 Data Plane을 구성할 수 있다.
+
+ 
+
+#### Istio
+Envoy Proxy로 구성된 Data Plane을 컨트롤 하는 것이 Istio이다. k8s에서는 envoy proxy가 pod에 sidecar 형태로 배포된다. istio-sidecar-injector가 자동으로 istio(envoy) proxy를 pod에 주입한다.
+
+ 
+istio architecture
+
+![image](https://user-images.githubusercontent.com/62640332/156370218-67a9833a-cc34-47c4-991f-8b15a4af67d3.png)
+
+
+istio의 core component는 아래와 같다.
+
+- Envoy
+- Pilot
+- Citadel
+- Gallery
+
+
+#### Pilot
+- Envoy sidecars를 위한 service-discovery를 제공
+- Istio에 배포된 envoy 의 생명 주기를 담당하며, 각 envoy는 pilot으로부터 가져온 다른 인스턴스 정보들로 로드밸런싱을 하게 된다.
+- Traffic Management API 를 사용해 Pilot이 envoy proxy가 더 세밀한 구성을 할 수 있게 도와준다.
+  - traffic management capabilities for intelligent routing
+  - retry, circuit breaker, timeout 등
+
+![image](https://user-images.githubusercontent.com/62640332/156370342-d4de6f5a-e0c3-4c66-b882-1388275a452c.png)
+
+
+- 새로운 인스턴스가 생성되면 platform adapter에게 알림
+- 인스턴스가 생성 되었으니 트래픽 규칙과 구성 변경을 알리기 위해 envoy proxy들에 이를 알림
+
+#### Citadel
+
+- 보안에 관련된 기능을 담당하는 모듈
+- 서비스를 사용하기 위한 사용자 인증 및 인가 담당
+- Istio는 TLS를 이용해 통신할 수 있는데, 이때 certification을 관리하는 역할을 한다.
+
+
+#### Gallery
+
+- provides configuration management services for Istio.
+ 
+
+#### Traffic Management
+
+Istio는 pilot(service discovery)과 envoy proxy를 활용해 트래픽을 컨트롤 하게 된다.
+
+pilot을 통해 envoy proxy는 트래픽을 관련 서비스로 전달 한다. 또한 기본적인 디스커버리와 로드밸런싱 외에 트래픽의 특정 비율을 새 버전의 Pod으로 보내는 등 더 많은 세밀한 규칙을 지정 할 수 있다.
+
+
+아래 그림이 Istio의 Traffic Management feature이다.
+
+![image](https://user-images.githubusercontent.com/62640332/156370488-ab72a4f7-7696-47e8-8409-8c86534d9d7e.png)
+
+
+위 feature 들을 활용하려면 필수적으로 알아야 할 것들이 있는데 아래와 같다.
+
+- Gateway
+- Virtual Service
+- DestinationRule
+
+위 3개의 요소들을 더 이해하기 편하도록 도식도를 그렸다. 글을 다 읽고 보면 더 이해가 잘 될지도...?
+
+
+![image](https://user-images.githubusercontent.com/62640332/156370575-8c9f2d59-bd93-4b89-b547-585d492828c1.png)
+
+#### Gateway
+
+Gateway는 외부로부터 트래픽을 받으며 가장 앞단에 존재한다. 
+
+mesh에 대한 inbound 및 outbound traffic을 관리하여 mesh에 진입하거나 나갈 트래픽을 지정할 수 있다. gateway는 서비스에 붙는 envoy 처럼 sidecar 로 실행 되는 것이 아니고, standalone envoy proxy 형태로 생성된다.
+
+
+Istio를 사용한다고 해서 외부에서 들어오는 트래픽을 반드시 Istio gateway를 사용해야 하는 것은 아니다.
+
+기존의 Kubernetes Ingress를 그대로 사용할 수 도 있다.
+
+
+#### Virtual Service
+istio traffic routing 기능의 핵심 구성 요소이고, 이스티오의 트래픽 관리를 유연하게 만드는 핵심적인 역할을 한다.
+
+virtual service는 k8s service로 요청이 라우팅 되는 방법을 구성할 수 있다. 또한 워크로드에 트래픽을 보내기 위한 다양한 트래픽 라우팅 규칙을 지정하는 방법들을 제공한다.
+
+virtual service 가 없는 경우, envoy는 모든 서비스 인스턴스 간에 round robin 로드 밸런싱을 사용해 트래픽을 분산 시키다.
+
+그러나 여기 모든 서비스에 virtual service를 적용시키 것이 best라고 한다.
+
+client는 virtual service에 요청을 보내고, envoy는 virtual service rule에 따라 각기 다른 버전으로 라우팅 하는 형태이다. (ex. 20%는 새 버전, 80%는 이전 버전으로 라우팅)
+
+이를 통해 새 서비스 버전으로 전송되는 트래픽의 비율을 점차적으로 늘릴 수 있다.(아래에서 다시 설명) 또한 http/1.1, http2, grpc, tcp 까지 라우팅 규칙을 구성할 수 있다.
+
+
+
+
+
+[출처]
+
+https://istio.io/docs/concepts/what-is-istio/
+https://istio.io/docs/ops/deployment/architecture/
+https://istio.io/docs/concepts/traffic-management/
+https://istio.io/docs/reference/config/networking/destination-rule/
+https://istio.io/docs/reference/config/networking/virtual-service/
+https://istio.io/docs/reference/config/networking/gateway/
+
