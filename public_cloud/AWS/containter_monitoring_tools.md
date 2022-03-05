@@ -12,7 +12,7 @@
 
 - [Thanos](#Thanos)
 
-- [Amazon Kinesis Data Firehose란?](#Amazon-Kinesis-Data-Firehose란?)
+- [Amazon Kinesis Data Firehose란?](#Amazon-Kinesis-Data-Firehose)
 
 ---
 
@@ -266,7 +266,7 @@ Gateway는 단순 쿼리를 API로 저장하는 역할뿐만 아니라 중간에
 
 ---
 
-### Amazon Kinesis Data Firehose란?
+### Amazon Kinesis Data Firehose
 
 실시간 데이터 스트림을 준비하여 데이터 스토어 및 분석 서비스로 로드
 
