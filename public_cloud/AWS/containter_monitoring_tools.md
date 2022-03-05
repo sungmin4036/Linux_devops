@@ -1,8 +1,8 @@
-- [프로메테우스](#프로메테우스(prometheus)
+- [프로메테우스](#프로메테우스(prometheus))
   
 - [데이터톡(Datadog)](#데이터톡(Datadog))
 
-- [뉴 렐릭(New Relic)](#뉴-렐릭(New Relic))
+- [뉴 렐릭(New Relic)](#뉴-렐릭(New-Relic))
 
 - [그라파나(Grafana)](#그라파나(Grafana))
 
@@ -11,6 +11,9 @@
 - [크로노그래프(Chronograf)](#크로노그래프(Chronograf))
 
 - [Thanos](#Thanos)
+
+- [Amazon Kinesis Data Firehose란?](#Amazon-Kinesis-Data-Firehose란?)
+
 ---
 
 그라파나와 데이터독 같은 클라우드 모니터링 서비스는 메트릭 데이터를 시각화하고 대시보드를 구성할 수 있다는 점에서 비슷한 특징을 가지고 있습니다.
