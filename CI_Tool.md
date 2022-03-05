@@ -1,6 +1,12 @@
+[ㅁ Jenkins](#ㅁ-jenkins)
+[ㅁ Travis CI](#ㅁ-travis-ci)
+[ㅁ Circle CI](#ㅁ-circle-ci)
+
+---
+
 ㅁ Jenkins vs. Travis CI vs. Circle CI
 
-- Jenkins
+### ㅁ Jenkins
 
 Jenkins는 자바 기반의 프로그램이다.
 
@@ -16,7 +22,7 @@ Jenkins는 dedicated server를 요구하기 때문에 추가적인 금액이 발
 <br>
 
 
-- Travis CI
+### ㅁ Travis CI
 
 Travis CI는 클라우드 기반의 서버이며, YAML file로 구성하고, 테스트를 실행하도록 docker를 지원한다.
 
@@ -30,7 +36,7 @@ Travis CI는 여러 환경에서 테스트되야 하는 오픈 소스 프로젝�
 <br>
 
 
-- Circle CI
+### ㅁ Circle CI
 
 Circle CI 역시 클라우드 기반의 시스템이며 Travis CI와 매우 흡사하다. 
 
