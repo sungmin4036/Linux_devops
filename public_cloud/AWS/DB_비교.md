@@ -264,6 +264,15 @@ DAX는 완전 관리형 In-Memory Read Performance를 향상시켜주는 인메�
 스트림과 Lambda를 결합하여 새로운 유저가 생성된 경우에 SES를 통해 이메일을 보내도록 하는 기능 등을 설계할 수 있습니다.
 
 
+---
+
+#### AWS Elasticache vs AWS RDS Read Replica 비교
+
+- AWS Elasticache 동일한 읽기 쿼리가 반복적으로 수행되는 경우.읽기 쿼리가 동적으로 변경되거나 NOW()와 같은 동적 요소가 있는 경우 AWS RDS Read Replica.
+- 데이터가 RAM에 저장되기 때문에 AWS Elasticache는 속도가 필요하다.
+- AWS Read Replica는 오래된 데이터에 대한 낮은 허용오차가 있다.
+- RAM이 무제한이 아니기 때문에 읽기 쿼리로 반환된 데이터가 큰 경우 AWS Read Replica
 
 
 출처] https://wbluke.tistory.com/58
+출처] http://pallav-bora.blogspot.com/2017/12/aws-elasticache-vs-aws-rds-read-replicas.html
