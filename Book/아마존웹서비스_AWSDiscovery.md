@@ -1,7 +1,14 @@
-
+[ㅁ 클라우드 용어](#ㅁ-클라우드-용어)
+[ㅁ EC2(Elastic Compute Cloud)](#ㅁ-EC2(Elastic-Compute-Cloud))
+[ㅁ EBS(Elastic Block Storage)](#ㅁ-EBS(Elastic-Block-Storage))
+[ㅁ 보안 그룹(Security Group)](#ㅁ-보안-그룹(Security-Group))
+[ㅁ 스토리지(Stroage)](#ㅁ-스토리지(Stroage))
+[ㅁ S3(Simple Storage Services)](#ㅁ-S3(Simple-Storage-Services))
+[ㅁ Glacier](#ㅁ-Glacier)
+[ㅁ 네트워크 및 VPC](#ㅁ-네트워크-및-VPC)
 ---
 
-### 클라우드 용어
+### ㅁ 클라우드 용어
 
 ㅁ 영역
 
@@ -10,7 +17,7 @@
 - 엣지 로케이션(Edge Location) : CDN 서ㅣ스인 CloudFront를 위한 캐시 서버(Cache Server)emfdml ahdma
 
 
-ㅁ EC2(Elastic Compute Cloud)
+### ㅁ EC2(Elastic Compute Cloud)
 
 ![image](https://user-images.githubusercontent.com/62640332/158479115-876844ee-11cd-467d-977f-9b4b291e4599.png)
 
@@ -31,7 +38,7 @@
 <br>
 <br>
 
-ㅁ EBS(Elastic Block Storage)
+### ㅁ EBS(Elastic Block Storage)
 
 : EC2에 연결되는 Block Level의 스토리지 서비스, 서버용 하드디스크로 생각하면 이해 쉬움.
 
@@ -62,7 +69,7 @@ EBS의 스냅샷 기능이 있어, EBS 볼륨의 데이터를 스냅샷(Snapshot
  이렇게 암호화된 EBS 스냅샷은 공유 및 타AWS계정에 공유되어도 사용 불가능
 
 
-ㅁ 보안 그룹(Security Group)
+### ㅁ 보안 그룹(Security Group)
 : 보안그룹은 인스턴스에 대한 Inbound, Outbound의 네트워크 트래픽을 제어하는 가상의 방화벽 역할 수행
 
 EC2 인스턴스 시작시, 각 인스턴스당 최대 5개의 보안 그룹 할당 가능
@@ -85,7 +92,7 @@ EC2 인스턴스 시작시, 각 인스턴스당 최대 5개의 보안 그룹 할
 <br>
 <br>
 
-ㅁ 스토리지(Stroage)
+### ㅁ 스토리지(Stroage)
 
 1. DAS(Direct Attatched Stroage) : 서버에 직접 연결하는 방식
 2. NSA(Network Attached Storage), SAN(Storage Area Network) : 스토리지를 빠른 속도의 네트워크로 연결하는 방식    
@@ -97,7 +104,8 @@ NAS 와 SAN 의 차이점은  SAN은 블록 수준에 데이터 저장, NSA는 �
 OS 입장에서 보면 SAN은 일반적으로 디스크로 나타나며 별도로 구성된 스토리지용 네트워크 존재, 반면 NAS는 OS에 파일 서버로 표시.
 
 
-ㅁ S3(Simple Storage Services)
+### ㅁ S3(Simple Storage Services)
+
 : 확장성이 뛰어나며, 무한대로 저장가능하고, 사용한 만큼만 지불하는 인터넷 기반 스토리지 서비스.   
 버킷(Bucket)이라는 리전(Region)내에서 유일한 영역을 생성하고 데이터를 키-값 형식의 객체(Object)로 저장합니다.   
 비용이 매우 저렴, 간단한 웹 서비스를 위한 웹사이트 만들기 가능.   
@@ -116,4 +124,42 @@ s3는 스토리지 기술을 근간으로 하며, 파일 단위로 접근만 지
 1. S3 표준(S3 Standard) : 자주 액세스하는 데이터를 위한 스토리지 클래스로 내구성, 강ㅇ성, 성능이 뛰어난 객체 스토리지 서비스 제공. 비용은 EBS 대비 20% 저렴, 전송 데이터위한 SSL 및 저장 데이터 암호화 지원
 2. S3 표준-IA(S3 Standard Infrequent Aceess) : 액세스 빈도는 낮지만 필요시 빠르게 액세스 해야하는 데이터를 위한 스토리지 클래스. 가격은 S3대비 58%저렴, 최근 백업 서비스에 많이 사용되는 스토리지 클래스
 3. S3 One Zone-IA(S3 One Zone Infrequent Access) : 최소 3개의 가용 영역(AZ)에 데이터를 저장하는 다른 S3 스토리지 클래스와 달리, 단일 AZ에 데이터 저장하여 S3-IA 대비 20% 저렴
-4. Glacier
+4. Glacier : 데이터 보관을 위한 안전하고 비용이 매우 저렴한 서비스. S3와 같은 내구성과 성능 및 가용성 보유하며, S3 표준 대비 최고 77%까지 저렴. 데이터 아카이빙 및 장기간 데이터 보관 및 오래된 로그 데이터에 대한 저장용도로 적당한 서비스. 또한 S3의 수명주기 기능을 통한 객체 자동 마이그레이션을 제공합니다.
+
+<br>
+<br>
+
+### ㅁ Glacier
+
+![image](https://user-images.githubusercontent.com/62640332/158597286-57d6289d-fd50-43bd-bdfa-73a128149306.png)
+
+S3의 개별 스토리지 영역인 Bucket 과 유사한 Vault라는 개별 스토리지 영역을 생성하여 데이터 보관.
+
+Console을 통한 업로드 지원, 별도의 API 이용하여 데이터에 대한 저장기능 제공
+
+일반적으로 S3에 저장되는 데이터는 라이프사이클 옵션을 활용하여 일정 기간 이상 지난 데이터에 대해 보다 저렴한 Glacier로 이동하여 저장하는 옵션을 사용 가능
+
+![image](https://user-images.githubusercontent.com/62640332/158597888-9f619bc0-3592-4ff8-9a50-e422c6ae7fc5.png)
+
+- 데이터 접근 방법
+
+1. API/SDK를 이용한 Direct 연결
+2. S3 라이프 사이클과의 통합
+3. 3Party Tool과 AWS Storage Gateway연동
+
+![image](https://user-images.githubusercontent.com/62640332/158598148-27d24536-b3f1-4b86-af2a-6c7fe19eed0f.png)
+
+
+<br>
+<br>
+
+### ㅁ 네트워크 및 VPC
+
+- AMI(Amazon Machine Image) : EC2 인서튼서 생성에 필요한 몯느 소프트웨어 정보를 담고 있는 템플릿 이미지
+- Amazon Marketplace : AWS에서 실행되는 소프트웨어 판매 또는 구매할 수 있는 온라인 스토어
+- VPN(Virtual Private Network) : 보안성 높은 사설 네트워크(Private Network)를 만들거나, 원격지간 서로 연결하고 암호화 기술 적용하여 보다 보안성 높은 통신서비스 제공,    기존 IDC에서 서비스하던 모든 시스템을 클라우드로 이전하는 것은 매우 어려운일, 그래서 AWS는 VPC(Virtual private Cloude)와 VPC Gateway를 통해 On-premise의 VPN장비와 AWS간의 VPn 연결 가능하게 하여, 보안성 높은 하이브리드 클라우드(Hybrid Cloud)환경 구현
+- VPC(Virtual Private Cloude) : AWS클라우드에서 논리적으로 격리된 네트워크 공간을 할당하여 가상 네트워크에서 AWS리소스를 이요할수 있는 서비스 제공
+
+![image](https://user-images.githubusercontent.com/62640332/158611824-6549e12e-0740-48c2-ac19-13e2a31a635d.png)
+
+![image](https://user-images.githubusercontent.com/62640332/158611954-2a8f0254-2858-4c6a-b757-b25dbece81a5.png)
