@@ -1,11 +1,12 @@
-[ㅁ 클라우드 용어](#ㅁ-클라우드-용어)
-[ㅁ EC2(Elastic Compute Cloud)](#ㅁ-EC2(Elastic-Compute-Cloud))
-[ㅁ EBS(Elastic Block Storage)](#ㅁ-EBS(Elastic-Block-Storage))
-[ㅁ 보안 그룹(Security Group)](#ㅁ-보안-그룹(Security-Group))
-[ㅁ 스토리지(Stroage)](#ㅁ-스토리지(Stroage))
-[ㅁ S3(Simple Storage Services)](#ㅁ-S3(Simple-Storage-Services))
-[ㅁ Glacier](#ㅁ-Glacier)
-[ㅁ 네트워크 및 VPC](#ㅁ-네트워크-및-VPC)
+- [ㅁ 클라우드 용어](#ㅁ-클라우드-용어)
+- [ㅁ EC2(Elastic Compute Cloud)](#ㅁ-ec2elastic-compute-cloud)
+- [ㅁ EBS(Elastic Block Storage)](#ㅁ-ebselastic-block-storage)
+- [ㅁ 보안 그룹(Security Group)](#ㅁ-보안-그룹security-group)
+- [ㅁ 스토리지(Stroage)](#ㅁ-스토리지stroage)
+- [ㅁ S3(Simple Storage Services)](#ㅁ-s3simple-storage-services)
+- [ㅁ Glacier](#ㅁ-glacier)
+- [ㅁ 네트워크 및 VPC](#ㅁ-네트워크-및-vpc)
+
 ---
 
 ### ㅁ 클라우드 용어
