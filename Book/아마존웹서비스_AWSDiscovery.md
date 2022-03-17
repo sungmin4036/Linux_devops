@@ -6,6 +6,11 @@
 - [ㅁ S3(Simple Storage Services)](#ㅁ-s3simple-storage-services)
 - [ㅁ Glacier](#ㅁ-glacier)
 - [ㅁ 네트워크 및 VPC](#ㅁ-네트워크-및-vpc)
+- [ㅁ DataBase](#ㅁ-database)
+- [ㅁ DNS(Domain Name System)](#ㅁ-dnsdomain-name-system)
+
+
+
 
 ---
 
@@ -268,4 +273,130 @@ NAT 게이트웨이 구성하기 위한 3가지 조건
 \# VPC 내부에서는 트래픽에대해 비용이 발생하지 않지만, VPC 외부로 데이터 송신하는 경우 사용량에 비례하여 OutBound 트래픽에 대한 비용이 발생
 
 
+
+### ㅁ DataBase
+
+- RDS(Relational Database Services)
+
+: 클라우드에서 관계형 데이터베이스를 더욱 간현하게 설정, 운영 및 확장 할수 있는 서비스
+
+Amazon Aurora, PostgreSQL, MySQL, MariaDB, Oracle, Microsoft SQL Server 등 익숙한 데이터베이스 엔진 중에서 원하는 DBMS 선택 가능.
+
+![image](https://user-images.githubusercontent.com/62640332/158838977-15f78e72-b197-4c4b-b024-d10109f91612.png)
+
+
+Amazon 클라우드 데이터베이스 서비스 선택사항
+
+1. 직접 EC2에 DB설치하여 이용하는것
+2. AWS에서 직접 제공해주는 DB 서비스 이용
+
+![image](https://user-images.githubusercontent.com/62640332/158839186-c54cdff3-e6e2-4405-aeab-58a90e58cd70.png)
+
+
+- RDS 주요특징
+
+1. 유연한 인스턴스 및 스토리지 확장
+2. 손쉽게 사용 가능한 백업 및 복원 기능 : DB는 최대 35일 데이터 보존 가능, 백업된 스냅샷(Snashot)을 통해 DB 생성도 가능
+3. 멀티 AZ(Availability Zone)을 통한 고가용성 확보
+4. RDS 암호화(Encryption) 옵션을 통한 보안성 강화
+5. Database Migration 서비스
+
+
+### ㅁ DNS(Domain Name System)
+
+: 도메인 이름을 IP 주소로 변환하여, 웹 사이트로 트래픽을 라우팅하는 역할
+
+
+![image](https://user-images.githubusercontent.com/62640332/158842217-48bd883c-a0d2-46f5-b4f9-1b83bd4c4349.png)
+
+![image](https://user-images.githubusercontent.com/62640332/158842369-5a03d5f1-abea-41d4-98b3-282400c89365.png)
+
+도메인 체계에서 최상위는 `Root`, 그아래 단계를 `1단계 도메인`이라고 하며, 이를 최상위 도메인 또는 TLD(Top Level Domain)이라 한다.
+
+최상위 도메인은 국가명을 나타내는 국가 최상위 도메인과 일반적으로 사용되는 일반 최상위 도메인으로 구분.
+
+도메인 구입한경우 1단계 도메인 중 하나를 선택하고, 원하는 도메인명 지정하여 등록.
+
+
+- DNS의 동작원리 
+   
+![image](https://user-images.githubusercontent.com/62640332/158842740-a49a4faa-4da1-40a6-986a-1c626203e145.png)
+
+![image](https://user-images.githubusercontent.com/62640332/158842969-c00e9a7c-f3df-4e01-b5d6-6707abace748.png)
+
+ㅁ Route 53
+
+: 가용성과 확작성 우수한 클라우드 기반의 DNS 웹서비스. 
+
+![image](https://user-images.githubusercontent.com/62640332/158843183-b4d03609-db9d-4226-9e85-890872dd56f0.png)
+
+![image](https://user-images.githubusercontent.com/62640332/158843223-cb21ae99-bd1f-4ceb-aa9a-1e3fcae639b5.png)
+
+
+<br>
+
+- Route 53의 주요 특징 및 기능
+
+![image](https://user-images.githubusercontent.com/62640332/158843307-fa8cf734-da5f-4fb2-978a-4e7faa2c7be0.png)
+
+: route 53의 HEalth check 기능을 사용하면 상태 확인 에이전트가 route53에 연결된 응요프로그램의 각 끝점을 모니터링하여 서비스의 사용 가능 여부 확인하고, '정상' or '비정상' 반환
+
+이를 사용해서 외부 사용자가 직접 접속한 것과 유사한 상황을 시뮬레이션(Simulation)할 수 있습니다.
+
+리소스의 연결 상태가 좋지 않을 떄 알림 메일을 수신하도록 각 상태 검사에 대해 CloudWatch알림을 구성할 수 있습니다.
+
+또한 장애 최(DNS Failover)가 구성되어 있고 에이전트가 정상이 아닌것으로 판단되면 Route 53는 외부 사용자를 정삭적으로 연결 가능한 사전 정의된 대체 서버나 지정된 앤드포인트(End-Point)로 연결을 전환시킬수 있습니다.
+
+
+<br>
+
+- 고가용성 DNS(High Availability DNS) 서비스 및 DNS Failover
+
+: route53는 상태 검사(health Check(와 연결된 장애 조치(Failover) 레코드 구성 가능.
+
+ 
+![image](https://user-images.githubusercontent.com/62640332/158844034-adb9c90f-49b8-49e6-a888-abc83fc5b4d0.png)
+
+상태 검사에서 연결 상태가 정상 상태가 반환되면, 응용프로그램은 계속 정상적으로 작동합니다.
+
+상태 검사에서 연결 사앹가 비정상 상태로 반환되면 Route 53에서 정상 상태가 아닌 끝점 값을 반환하지 않고 오류 복구 레코드의 값에 대해 응답하기 시작.
+
+DNS Failover Record를 활용하면 외부 사용자를 으용프로그램의 오류나 시스템 장애 상황에서 미리 정의된 응용프로그램이나 정상적으로 도달 가능한 외부 리소스 로 연결을 전환합니다.
+
+이렇게 으용프로그램이나 시스템의 장애 사오항에서 정상적인 앤드포인트(End-Point)로 장애 조치(Failover)를 수행하면 웹 사이트 또는 애플리케이션의 다운 타임을 최고하 가능.
+
+ 
+![image](https://user-images.githubusercontent.com/62640332/158844462-cd5e2bd3-0f06-40f5-acad-df786fbc2605.png)
+
+<br>
+
+- 지연 시간 기반 라우팅(Latency Based Routing)
+
+![image](https://user-images.githubusercontent.com/62640332/158844552-efe7f19c-5df2-43bc-a79c-e37767dfc9d3.png)
+
+: route53는 동일한 기능을 수행하는 여러 데이터 센터에 EcC2 리소스가 있고, 가장 지연시간이 적은 리소스로 route53에서 DNS쿼리에 응답 처리하여 지연 시간 기반 라우팅 서비스 제공.
+
+지연 시간 기반 라우팅은 최종 사용자에게 최저 지연 시간을 제공하는 엔드포인트로 라우팅을 제공하여, 일정 기간동안 수행된 지연 시간 측정을 기반으로 하며 주기적으로 자연시간을 측정하여 변경 사항을 반영합니다.
+
+
+<br>
+
+- 가중치 기반 라우팅(Weighted Round Robin Routing)
+
+ 
+![image](https://user-images.githubusercontent.com/62640332/158844892-907165d2-e3df-4832-8150-a5bdd999d474.png)
+
+: 여러 리소스 레코드를 단일 DNS 이름으로 연결후 같은 기능을 수행하는 여러 리소스에 대해 사용자가 지정한 가중치 비율로 트래픽 운용 가능.
+
+가중치 기반 라우팅은 로드 밸런싱 및 새 버전의 소프트웨어 테스트를 포함하여 다양한 목적에 사용됩니다.
+
+<br>
+
+- 지역 기반 라우팅(Geolocation Routing)
+
+![image](https://user-images.githubusercontent.com/62640332/158845139-af27e409-5c1e-4455-8463-8a7764480757.png)
+
+: 요청이 시작된 지리적 위치를 기반으로 특정 엔드포인트에 대한 라우팅을 수행하는 기능.
+
+국가별 또는 사용자의 지역적 위치에 따라 현지화된 콘텐츠를 사용자별로 제공하거나, 라이선스가 있는 시장에만 콘텐츠 배포를 한정하거나 배포 대상으로 선택할 수 있습니다.
 
