@@ -84,3 +84,16 @@ awk -F'/' '/Stream:/ {print $4}
 
 - 앞뒤 공백 제거
 tr -d '[:space:]'
+
+
+```
+| 파이프 처리는 subshell 생성해서 처리하는것.
+
+#subshell 에서 생성하다보니 변수 할당을 해도 전달이 불가능.
+echo "hello world" | read first second
+echo $second $first
+
+# <<< 같은 프로세스 에서 처리하여 변수 할당 위해서는 아래의 방법사용
+read first second <<< "hello world"
+echo $second $first
+```
