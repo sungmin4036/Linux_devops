@@ -110,7 +110,7 @@ R&D: windos os 서비스 관리 R&D, dvc R&D<br>
 CI/CD구축: origin 빌드 CI/CD구축 <br>
 명령어 개선 및 생성: -<br>
 인프라: incredibuild upgrade 및 사이드이팩트 처리, 프로젝트 origin 머신 생성 및 환경구성, BUILD FRAM 구축, 신규 프로젝트 SVN서버 구축, helix swarm 서버 구축<br>
-R&D: perforce의 helix swarm R&D
+R&D: perforce의 helix swarm R&D, jenkins ldap 연동 에러 처리
 
 
 - 2023.10
