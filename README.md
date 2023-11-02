@@ -17,7 +17,6 @@
 근무 기간: 2022.06~ 재직 중
 직종: devops 엔지니어
 
-\# 중복되는 작업이나 평소 작업은 작성 X, 간단한 에러 해결 X 새로운 R&D에 대해서만 작성할 것.
 \# 주요 업무: CI/CD 구축, 인프라 구축, 모니터링 및 에러 관리
 
 - 2022.06
@@ -77,25 +76,25 @@ CI/CD구축: Project Origin 빌드 CI/CD 구축
 R&D: 
 
 - 2023.04
-CI/CD구축: resource hacker CI/CD화
+CI/CD구축: resource hacker CI/CD 구축
 명령어 개선 및 생성: -
 인프라: 빌드 완료 후 메시지 보내는 거 개선
 R&D: resource hacker R&D, mac OS launchd R&D
 
 - 2023.05
-CI/CD 구축: Prometheus 설정 CI/CD화
+CI/CD 구축: Prometheus 설정 CI/CD 구축
 명령어 개선 및 생성: -
 인프라: SSL 인증서 교체, grafana 데이터 보관 주기 및 경로 변경, 모든 프로젝트 jenkins pipeline CI/CD 이관 작업, GPU node exporter add & grafana dashboard 구축
 R&D: 관리하는 PC들 네트워크 구성도 구현 R&D, gitlab-runner 경로 변경 R&D
 
 - 2023.06
-CI/CD 구축: Jenkins 빌드잡 auth 동기화 CI/CD화 
+CI/CD 구축: Jenkins 빌드잡 auth 동기화 CI/CD 구축 
 명령어 개선 및 생성: SSL 검증 커맨드 생성
 인프라: -
 R&D: perforce R&D
 
 - 2023.07
-CI/CD 구축: android gpg 빌드 CI/CD화, crashsight UE5 CI/CD화
+CI/CD 구축: android gpg 빌드 CI/CD 구축, crashsight UE5 CI/CD 구축
 명령어 개선 및 생성: 
 인프라: crashsight UE5 환경구성
 R&D: Jenkins pipeline 마스킹 R&D, Ansible R&D, windows OS visual SVN R&D
