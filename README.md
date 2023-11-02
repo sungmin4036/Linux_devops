@@ -119,6 +119,18 @@ CI/CD구축: perforce 와 svn sync, 프러젝트 origin  에디터, hlod빌드 C
 인프라: 신규 프로젝트 jenkins 서버 구축<br>
 R&D: perforce submit template구현, perforce submit시 규칙 강제 trigger 생성, perforce 이전 submit 내역 볼수있게 trigger구현, prometheus alert 개선, 각종 perforce 에러 및 사용법 R&D 및 공유 + 해결, 그라파나 시놀리지 대시보드 개선, jenkins pipeline 로직 개선 및 컨플릭트 에러 해결
 
+ㅁ # 지원하는 프로젝트 프로젝트
+
+- ORIGIN
+- Grand Cross: Age of Titans
+- OverPrime
+- DemisReborn
+- 아스달
+- GoldenBros
+- 요괴듀얼
+- 대외비 프로젝트 등
+
+업무: CI/CD 구축, 인프라 및 환경 구축, 모니터링, 새로운 툴 R&D, 모니터링, 에러 해결
 
 ---
 
