@@ -4,8 +4,9 @@
 
 - shell, batch, poewrshell 스크립트와 파이썬을 사용하여 자동화 작업
 - 정보보안 지식 (조금)있습니다.
-- 새로운 tool 등 R&D
+- 새로운 tool 등 R&D 및 활용 가능
 - Linux, mac, window os 지식
+- CI/CD 구축
 
 ---
 
@@ -104,6 +105,20 @@ CI/CD구축: - <br>
 명령어 개선 및 생성: -<br>
 인프라: 시놀로지 서버 perforce 구축 및 node exporter 추가, docker 경로 변경<br>
 R&D: windos os 서비스 관리 R&D, dvc R&D<br>
+
+- 2023.09
+CI/CD구축: origin 빌드 CI/CD구축 <br>
+명령어 개선 및 생성: -<br>
+인프라: incredibuild upgrade 및 사이드이팩트 처리, 프로젝트 origin 머신 생성 및 환경구성, BUILD FRAM 구축, 신규 프로젝트 SVN서버 구축, helix swarm 서버 구축<br>
+R&D: perforce의 helix swarm R&D
+
+
+- 2023.10
+CI/CD구축: perforce 와 svn sync, 프러젝트 origin  에디터, hlod빌드 CI/CD구축<br>
+명령어 개선 및 생성: -<br>
+인프라: 신규 프로젝트 jenkins 서버 구축<br>
+R&D: perforce submit template구현, perforce submit시 규칙 강제 trigger 생성, perforce 이전 submit 내역 볼수있게 trigger구현, prometheus alert 개선, 각종 perforce 에러 및 사용법 R&D 및 공유 + 해결, 그라파나 시놀리지 대시보드 개선, jenkins pipeline 로직 개선 및 컨플릭트 에러 해결
+
 
 ---
 
