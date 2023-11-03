@@ -7,6 +7,8 @@
 - 새로운 tool 등 R&D 및 활용 가능
 - Linux, mac, window OS 지식
 - CI/CD 구축
+- 서버 구축 및 운영 관리(svn, gitlab, mercurial, samba, perforce등)
+- 모니터링 시스템 구축 및 관리(prometheus, grafana)
 
 ---
 
