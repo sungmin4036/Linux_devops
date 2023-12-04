@@ -120,6 +120,12 @@ CI/CD 구축: perforce와 SVN sync, 프로젝트 origin 에디터, hlod빌드 CI
 인프라: 신규 프로젝트 Jenkins 서버 구축<br>
 R&D: perforce submit template 구현, perforce submit 시 규칙 강제 trigger 생성, perforce 이전 submit 내역 볼 수 있게 trigger 구현, Prometheus alert 개선, 각종 perforce 에러 및 사용법 R&D 및 공유 + 해결, 그라파나 시놀리지 대시보드 개선, Jenkins pipeline 로직 개선 및 컨플릭트 에러 해결<br>
 
+- 2023.11<br>
+CI/CD 구축: perforce-svn sync시 csv 파일 excel 변환 처리 <br>
+명령어 개선 및 생성: -<br>
+인프라: 대외비 프로젝트 mac 빌드 환경 구성 및 에러 처리, 대외비 프로젝트 cdn 구성 ,Demis Re born 프로젝트 최초 윈도우 빌드 환경 구성<br>
+R&D: - <br>
+
 ㅁ # 지원하는 프로젝트 프로젝트
 
 - ORIGIN
