@@ -63,23 +63,37 @@ ${#variable[@]}는 배열 변수의 요소 수를 나타냅니다.
 
 ```
 
+---
+
 IFS=$'\n' read -rd '' -a lines <<< "$pending_line"
 current_pending_lines="${#lines[@]}"
 
 IFS=$'\n':
 
 IFS는 "Internal Field Separator"의 약자로, Bash에서 텍스트를 분리하는 데 사용되는 구분자입니다.
+
 이 줄은 IFS를 줄 바꿈 문자($'\n')로 설정합니다. 이것은 입력 문자열을 줄 바꿈 문자를 기준으로 분리하게 됩니다.
+
+---
+
 read -rd '' -a lines:
 
 read 명령어는 표준 입력으로부터 데이터를 읽고 변수에 할당하는 데 사용됩니다.
+
 -r 옵션은 이스케이프 시퀀스(escape sequence)를 해석하지 않도록 합니다.
+
 -d '' 옵션은 빈 문자열을 구분자로 사용하도록 지정합니다. 이것은 구분자를 사용하지 않는다는 의미입니다.
+
 -a lines는 읽은 값을 배열 lines에 저장하라는 것을 의미합니다.
+
+---
+
 <<< "$pending_line":
 
 <<< 연산자는 문자열을 표준 입력으로 전달하는데 사용됩니다.
 $pending_line 변수의 내용을 문자열로 취급하여 read 명령어에 전달됩니다.
+
+---
 
 - 단어 찾기
 awk -F'/' '/Stream:/ {print $4}
