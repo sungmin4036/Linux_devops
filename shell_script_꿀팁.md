@@ -16,13 +16,15 @@ set -o ignoreeof: 이 옵션을 활성화하면 Ctrl-D를 사용하여 터미널
 
 ---
 
+```
 sh test.sh == ./test.sh   <--- sub shell 생성
 . test.sh == source test.sh   <--- sub shell 생성X
-
+```
 
 
 ---
 
+```
 $0, $1, $2, ...:
 
 $0은 스크립트의 이름을 나타내며, $1, $2, 등은 스크립트에 전달된 인수(매개변수)를 나타냅니다.
@@ -55,11 +57,11 @@ ${#variable}:
 
 ${#variable}는 변수의 길이를 나타냅니다. 이것은 문자열의 문자 수 또는 배열의 요소 수를 세는 데 사용됩니다.
 
-
-
 ${#variable}는 변수의 길이를 나타냅니다.
 
 ${#variable[@]}는 배열 변수의 요소 수를 나타냅니다.
+
+```
 
 IFS=$'\n' read -rd '' -a lines <<< "$pending_line"
 current_pending_lines="${#lines[@]}"
