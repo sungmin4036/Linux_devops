@@ -1,14 +1,12 @@
-[핵심 기술]
-- shell, batch, Powershell 스크립트와 파이썬을 사용하여 자동화 작업
+[핵심 기술 및 주요 업무]
+- shell, batch, Powershell 스크립트와 파이썬을 사용하여 자동화 작업 가능합니다.
+- Unity/Unreal 프로젝트 CI/CD 구축 가능합니다.(CI/CD 구축은 주로 python으로 하였고, python으로 처리 불가능한 부분만 shell script, batch script 사용하였습니다.)
+- windows, MAC, Linux OS 상관없이 인프라 구성 및 운영 가능합니다.
+- Grafana + Promehteus + alertmanager 구성하여 모니터링 환경 구성 및 운영 가능합니다.
+- 다양한 버전관리툴 구축 및 운영 가능합니다. ( gitlab, svn, mercurial, perforce...)
+- 빌드 자동화에 필요한 툴 구축 및 운영 가능합니다. (jenkins, samba, incredibuild, resource hacker ...)
+- DNS, SSL 관리
 - 정보보안 지식 (조금) 있습니다.
-- 새로운 tool 등 R&D 및 활용 가능
-- Linux, mac, window OS 지식
-- CI/CD 구축( + 에러 처리) (로컬 머신 클린 -> 전처리 -> 빌드 -> 후처리 -> upload -> 알람)
-- 서버 구축 및 운영 관리(svn, gitlab, mercurial, samba, perforce 등)
-- 모니터링 시스템 구축 및 관리(Prometheus, grafana)
-- on-premis 기반 환경 운영 /  
-- gcp, aws 와 container 기반 는 실제 업무에서 사용경험 별로 없음 
-
 
 ---
 
