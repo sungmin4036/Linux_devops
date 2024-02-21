@@ -124,6 +124,22 @@ CI/CD 구축: perforce-svn sync시 csv 파일 excel 변환 처리 <br>
 인프라: 대외비 프로젝트 mac 빌드 환경 구성 및 에러 처리, 대외비 프로젝트 cdn 구성 ,Demis Re born 프로젝트 최초 윈도우 빌드 환경 구성<br>
 R&D: - <br>
 
+- 2023.12<br>
+팀 프로젝트 DemisReborn 으로 이동 및 서버 개발자로 직종 변경<br>
+java spring 및 분석<br>
+
+- 2024.01<br>
+기존 운영 중인 서버 docker container 로 이관
+
+- 2024.02<br>
+java spring 공부 진행중
+
+
+
+
+
+
+
 ㅁ # 지원하는 프로젝트 프로젝트
 
 - ORIGIN
