@@ -129,10 +129,10 @@ R&D: - <br>
 java spring 및 분석<br>
 
 - 2024.01<br>
-기존 운영 중인 서버 docker container 로 이관
+기존 운영 중인 서버 docker container 로 이관 및 CI/CD 구축
 
 - 2024.02<br>
-java spring 공부 진행중
+java spring 기반의 서버 분석 진행중
 
 
 
