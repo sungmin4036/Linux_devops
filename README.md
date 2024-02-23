@@ -128,7 +128,7 @@ R&D: - <br>
 
 - 2023.12<br>
 팀 프로젝트 DemisReborn 으로 이동 및 서버 개발자로 직종 변경<br>
-java spring 및 분석<br>
+다른 팀에 기존 업무 인수인계<br>
 
 - 2024.01<br>
 기존 운영 중인 서버 docker container 로 이관 및 CI/CD 구축
