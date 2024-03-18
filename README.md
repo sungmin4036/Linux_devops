@@ -1,12 +1,55 @@
 [핵심 기술 및 주요 업무]
-- shell, batch, Powershell 스크립트와 파이썬을 사용하여 자동화 작업 가능합니다.
-- Unity/Unreal 프로젝트 CI/CD 구축 가능합니다.(CI/CD 구축은 주로 python으로 하였고, python으로 처리 불가능한 부분만 shell script, batch script 사용하였습니다.)
-- windows, MAC, Linux OS 상관없이 인프라 구성 및 운영 가능합니다.
-- Grafana + Promehteus + alertmanager 구성하여 모니터링 환경 구성 및 운영 가능합니다.
-- 다양한 버전관리툴 구축 및 운영 가능합니다. ( gitlab, svn, mercurial, perforce...)
-- 빌드 자동화에 필요한 툴 구축 및 운영 가능합니다. (jenkins, samba, incredibuild, resource hacker ...)
+- shell, batch, Powershell, 파이썬 스크립트 자동화 작업할 수 있습니다.
+- Unity/Unreal 프로젝트 CI/CD 구축할 수 있습니다.
+- 서버(java ) docker 환경 CI/CD 구축할 수 있습니다.
+- windows, MAC, Linux OS 상관없이 인프라 구성 및 운영할 수 있습니다.
+- Grafana + Promehteus + alertmanager 구축하여 모니터링 환경 구성 및 운영할 수 있습니다.
+- 다양한 버전관리툴 구축 및 운영할 수 있습니다. ( gitlab, svn, mercurial, perforce...)
+- 빌드 자동화에 필요한 툴 서버 구축 및 운영할 수 있습니다. (Jenkins, samba, incredibuild, resource hacker ...)
 - DNS, SSL 관리
-- 정보보안 지식 (조금) 있습니다.
+- 네트워크, 정보보안 지식 (조금) 있습니다. ( 정보 보안 기사 필기 합격)
+
+[주요 성과]
+- 게임 서버, 게임 빌드 환경 및 빌드 + 배포 구축(CI/CD)
+- 모니터링 시스템 구축 및 운영
+- 서버 관리와 설치 스크립트 작성 + 자동화 
+- 젠킨스 pipeline style 변환
+- 버전관리 서버(svn, gitlab) 백업 구축 및 관리
+- 다양한 환경(MAC, WIN, Linux)에서 빌드 CI/CD 구축
+- 빌드 에러 처리
+
+[이직사유]
+- 피드백이 없이 혼자서 다 처리하는 상황
+- devops 직무에 필수라고 생각하는 k8s와 클라우드 환경의 적극적인 사용 불가
+- 아침에 갑자기 권고사직 후, 진행되는 과정을 봐서 직장생활에 불안감을 느낌
+
+[CI/CD 구축 경험]
+CI/CD 툴로는 Jenkins, gitlab 사용하고 있습니다.
+자동화 내용은 프로젝트 빌드위한 인프라 환경 구축부터  게임 및 서버 빌드, 알람, 프로그램 인증서 등록, 배포 등 진행하고 있습니다.
+
+[클라우드 사용 경험]
+넷마블에서 제공하는 openstack으로만들어진 서비스를 이용하며,  VM 인스턴스 생성 및 harbor 운영 사용합니다.
+그후 요청하신 환경에 따라 필요한 설정이나 서버 설치 처리하였습니다.
+SVN, gitlab, samba 서버 등이 여기에 해당합니다.
+
+AWS의 경우 CDN만 사용하여, 배포용으로만 사용 중입니다.
+
+GCP 경우 DNS, VM 인스턴스, big query, 버킷, cloud functions 위주로 사용하였습니다.
+여러 서버에서의 데이터 저장 및 분석을 위해 빌드 종료 후 필요한 데이터를 JSON 형태로 만들어
+post로 cloud function에 전달하면, big query에 원하는 형태로 저장하고, 
+해당 big query에 있는 데이터를 grafana에 연결하여 그래프로 시각화 사용하고 있습니다.
+
+[인프라 경험]
+주로 이용하는 환경은 구글 클라우드와 openstack 으로 만들어진 서비스 이용하고 있습니다.
+간단한 서버 생성부터 SVN, gitlab 서버 설치 및 배포까지 관리하고 있습니다.
+인프라 쪽 주 업무는 게임 개발, 게임 서버 환경 세팅입니다. 
+환경 구성부터 게임빌드, 배포(CI/CD)까지 하고 있습니다.
+그 외에는 SVN, mercurial 등 버전관리 서버 이관, SSL 관리, 서버 ldap 사용자 관리, 서버 모니터링 등 전반적으로 관리하고 있습니다.
+
+[docker 나 k8s 사용경험]
+docker의 경우는 java 기반의 WAS(Wep application server) CI/CD 만들었습니다.
+
+k8s는 grafana + Prometheus + alert manager 모니터링 환경을 k8s 와 helm 이용하여 자동화 R&D 하였다가, 중단한 상태입니다.
 
 
 구축한 CI/CD 아키텍처
