@@ -8,6 +8,107 @@
 - DNS, SSL 관리
 - 정보보안 지식 (조금) 있습니다.
 
+
+구축한 CI/CD 아키텍처
+
+![image](https://github.com/sungmin4036/Devops/assets/62640332/7617401d-647a-4713-a460-9fce92be4e75)
+
+
+---
+
+![image](https://github.com/sungmin4036/Devops/assets/62640332/1815ff76-9691-4354-8cb1-878347c496a3)
+
+
+빌드 CI/CD 의경우 파이썬 사용하여 JSON 으로 처리하고있습니다.
+
+아래는 예시 입니다.
+
+```
+{
+  "common_param": {
+    "PROJECT_PATH": "/Volumes/SSD2/repo/git_playworld_unity_android_fqa/",
+    "DEPLOY_PATH": "/build/pw/fqa/Android/",
+    "EXPORT_PATH": "#common.PROJECT_PATH#Bin/AOS/",
+    "SYMBOL_PATH": "#common.PROJECT_PATH#Library/Bee/artifacts/Android/il2cppOutput/build",
+    "SDK_PATH": "/Applications/Unity/Hub/Editor/2021.3.15f1/PlaybackEngines/AndroidPlayer/SDK/build-tools/30.0.2",
+    "ADD_DEFINE": "BUNDLE_PATH;${TARGET_SERVER}",
+    "BRANCH_PATH": "fqa",
+    "_IS_RECORD_GRAFANA": true,
+    "_IS_USE_SHARED_CONF": true,
+    "_ARTIFACT_PATH": "#common.EXPORT_PATH#GrandCrossW_#return.CUR_REV#_symbols.zip",
+    "LINE_CHANNEL": "pw_build",
+    "STARK_SERVICE_KEY": "PW_SERVICE_KEY",
+    "PROJECT_KEY": "PW"
+  },
+  "commands": [
+    {
+      "command": "SendJenkinsMessageStart",
+      "params": {
+        "channel": "#common.LINE_CHANNEL#",
+        "stark_service_key": "#common.STARK_SERVICE_KEY#",
+        "project_key": "#common.PROJECT_KEY#"
+      }
+    },
+    {
+      "command": "Remove",
+      "params": {
+        "Condition": "${IS_CLEAR}",
+        "path": [
+          "#common.PROJECT_PATH#/Library"
+        ]
+      }
+    },
+    {
+      "command": "GetIsEmpty",
+      "params": {
+        "check_str": "${GIT_TAG}"
+      },
+      "return": [
+        "IS_EMPTY"
+      ]
+    },
+    {
+      "command": "GitCleanPullSwitch",
+      "params": {
+        "Condition": "#return.IS_EMPTY#",
+        "project_path": "#common.PROJECT_PATH#",
+        "branch": "${BRANCH}",
+        "option": [
+          "-q"
+        ]
+      }
+    },
+    {
+      "command": "GitTagCheckout",
+      "params": {
+        "Condition": "#return.IS_EMPTY# == false",
+        "project_path": "#common.PROJECT_PATH#",
+        "git_tag": "${GIT_TAG}",
+        "branch": "${BRANCH}"
+      }
+    },
+    {
+      "command": "GetCurrentGitHash",
+      "params": {
+        "project_path": "#common.PROJECT_PATH#"
+      },
+      "return": [
+        "CUR_REV"
+      ]
+    },
+    {
+      "command": "GetUnityProjectVersion",
+      "params": {
+        "projectsettings_path": "#common.PROJECT_PATH#/ProjectSettings/ProjectSettings.asset"
+      },
+      "return": [
+        "PROJ_VERSION"
+      ]
+    }
+  ]
+}
+```
+
 ---
 
 ### ㅁ 경력 정리
