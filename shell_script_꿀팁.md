@@ -1,3 +1,20 @@
+
+# devops
+
+전체적인 데브옵스 내용 정리와 기초 지식
+
+ㅁ 추가적으로 알면 좋은것
+
+[- YAML문법](https://subicura.com/k8s/prepare/yaml.html#%E1%84%80%E1%85%B5%E1%84%87%E1%85%A9%E1%86%AB%E1%84%86%E1%85%AE%E1%86%AB%E1%84%87%E1%85%A5%E1%86%B8)<br>
+[- docker docs](https://docs.docker.com/)<br>
+[- kakao ent container deep1](https://tech.kakaoenterprise.com/154)<br>
+[- kakao ent container deep2](https://tech.kakaoenterprise.com/171)<br>
+[- debug 기초](https://hopeis.tistory.com/270)<br>
+[- k8s 기초](https://happycloud-lee.tistory.com/246)<br>
+[- devops 겉](https://www.devkuma.com/docs/category/dev-ops/)<br>
+
+---
+
 set -o errexit 또는 set -e: 이미 설명한 대로, 명령이 실패할 때 스크립트가 즉시 종료됩니다.
 
 set -o nounset 또는 set -u: 이 옵션을 활성화하면, 사용되지 않은 변수를 사용하려고 시도할 때 스크립트가 실패합니다. 이는 변수를 정의하지 않고 사용하는 오류를 방지하는 데 도움이 됩니다.
