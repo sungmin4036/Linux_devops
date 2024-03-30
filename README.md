@@ -359,19 +359,3 @@ KT 과금 시스템 솔루션, 비밀번호 변경 솔루션 유지보수 및 �
 - 문서 작성
 
 
-
-# devops
-
-전체적인 데브옵스 내용 정리와 기초 지식
-
-ㅁ 추가적으로 알면 좋은것
-
-[- YAML문법](https://subicura.com/k8s/prepare/yaml.html#%E1%84%80%E1%85%B5%E1%84%87%E1%85%A9%E1%86%AB%E1%84%86%E1%85%AE%E1%86%AB%E1%84%87%E1%85%A5%E1%86%B8)<br>
-[- docker docs](https://docs.docker.com/)<br>
-[- kakao ent container deep1](https://tech.kakaoenterprise.com/154)<br>
-[- kakao ent container deep2](https://tech.kakaoenterprise.com/171)<br>
-[- debug 기초](https://hopeis.tistory.com/270)<br>
-[- k8s 기초](https://happycloud-lee.tistory.com/246)<br>
-[- devops 겉](https://www.devkuma.com/docs/category/dev-ops/)<br>
-
-
