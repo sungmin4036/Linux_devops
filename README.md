@@ -76,7 +76,7 @@ post로 cloud function에 전달하면, big query에 원하는 형태로 저장�
 
 ---
 
-![image](https://github.com/sungmin4036/private_study/assets/62640332/4be29d89-b721-4db7-b827-7d1f5d8d3808)
+![image](https://github.com/sungmin4036/Devops/assets/62640332/84e5c916-bde8-42a3-936e-9200a9eb991c)
 
 ---
 
