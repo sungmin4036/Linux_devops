@@ -9,6 +9,8 @@
 - DNS, SSL 관리
 - 네트워크, 정보보안 지식 (조금) 있습니다. ( 정보 보안 기사 필기 합격)
 
+---
+
 [주요 성과]<br>
 - 게임 서버, 게임 빌드 환경 및 빌드 + 배포 구축(CI/CD)
 - 모니터링 시스템 구축 및 운영
@@ -18,14 +20,20 @@
 - 다양한 환경(MAC, WIN, Linux)에서 빌드 CI/CD 구축
 - 빌드 에러 처리
 
+---
+
 [이직사유]<br>
 - 피드백이 없이 혼자서 다 처리하는 상황
 - devops 직무에 필수라고 생각하는 k8s와 클라우드 환경의 적극적인 사용 불가
 - 아침에 갑자기 권고사직 후, 진행되는 과정을 봐서 직장생활에 불안감을 느낌
 
+---
+
 [CI/CD 구축 경험]<br>
 CI/CD 툴로는 Jenkins, gitlab 사용하고 있습니다.
 자동화 내용은 프로젝트 빌드위한 인프라 환경 구축부터  게임 및 서버 빌드, 알람, 프로그램 인증서 등록, 배포 등 진행하고 있습니다.
+
+---
 
 [클라우드 사용 경험]<br>
 넷마블에서 제공하는 openstack으로만들어진 서비스를 이용하며,  VM 인스턴스 생성 및 harbor 운영 사용합니다.
@@ -39,6 +47,8 @@ GCP 경우 DNS, VM 인스턴스, big query, 버킷, cloud functions 위주로 �
 post로 cloud function에 전달하면, big query에 원하는 형태로 저장하고, 
 해당 big query에 있는 데이터를 grafana에 연결하여 그래프로 시각화 사용하고 있습니다.
 
+---
+
 [인프라 경험]<br>
 주로 이용하는 환경은 구글 클라우드와 openstack 으로 만들어진 서비스 이용하고 있습니다.
 간단한 서버 생성부터 SVN, gitlab 서버 설치 및 배포까지 관리하고 있습니다.
@@ -46,14 +56,19 @@ post로 cloud function에 전달하면, big query에 원하는 형태로 저장�
 환경 구성부터 게임빌드, 배포(CI/CD)까지 하고 있습니다.
 그 외에는 SVN, mercurial 등 버전관리 서버 이관, SSL 관리, 서버 ldap 사용자 관리, 서버 모니터링 등 전반적으로 관리하고 있습니다.
 
+---
+
 [docker 나 k8s 사용경험]<br>
 docker의 경우는 java 기반의 WAS(Wep application server) CI/CD 만들었습니다.
 
 k8s는 grafana + Prometheus + alert manager 모니터링 환경을 k8s 와 helm 이용하여 자동화 R&D 하였다가, 중단한 상태입니다.
 
+---
+
 [개발 경험]<br>
 24년 3월기준 게임 서벌 개발자도 겸직하고 있습니다. (Spring boot 기반)
 
+---
 
 [구축한 CI/CD 아키텍처]
 
@@ -63,6 +78,12 @@ k8s는 grafana + Prometheus + alert manager 모니터링 환경을 k8s 와 helm 
 ---
 
 ![image](https://github.com/sungmin4036/Devops/assets/62640332/1815ff76-9691-4354-8cb1-878347c496a3)
+
+
+---
+
+![image](https://github.com/sungmin4036/book/assets/62640332/272601d8-bd66-476a-97a2-f4c63c5de8f8)
+
 
 
 빌드 CI/CD 의경우 파이썬 사용하여 JSON 으로 처리하고있습니다.
