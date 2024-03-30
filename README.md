@@ -84,11 +84,11 @@ k8s는 grafana + Prometheus + alert manager 모니터링 환경을 k8s 와 helm 
 
 ![image](https://github.com/sungmin4036/book/assets/62640332/272601d8-bd66-476a-97a2-f4c63c5de8f8)
 
+위처럼 Jenkins pipeline 이나 gitlab pipeline 으로 CI/CD 구현해서 사용하고있습니다.
 
+그리고 파이썬 사용하여 JSON 형식으로 읽어 처리하고있습니다.
 
-빌드 CI/CD 의경우 파이썬 사용하여 JSON 으로 처리하고있습니다.
-
-아래는 예시 입니다.
+아래는 CI/CD 예시 입니다.
 
 ```
 {
