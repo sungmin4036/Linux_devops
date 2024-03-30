@@ -30,17 +30,17 @@
 ---
 
 [CI/CD 구축 경험]<br>
-CI/CD 툴로는 Jenkins, gitlab 사용하고 있습니다.
+- CI/CD 툴로는 Jenkins, gitlab 사용하고 있습니다.
 자동화 내용은 프로젝트 빌드위한 인프라 환경 구축부터  게임 및 서버 빌드, 알람, 프로그램 인증서 등록, 배포 등 진행하고 있습니다.
 
 ---
 
 [클라우드 사용 경험]<br>
-넷마블에서 제공하는 openstack으로만들어진 서비스를 이용하며,  VM 인스턴스 생성 및 harbor 운영 사용합니다.
+- 넷마블에서 제공하는 openstack으로만들어진 서비스를 이용하며,  VM 인스턴스 생성 및 harbor 운영 사용합니다.
 그후 요청하신 환경에 따라 필요한 설정이나 서버 설치 처리하였습니다.
 SVN, gitlab, samba 서버 등이 여기에 해당합니다.
 
-AWS의 경우 CDN만 사용하여, 배포용으로만 사용 중입니다.
+- AWS의 경우 CDN만 사용하여, 배포용으로만 사용 중입니다.
 
 GCP 경우 DNS, VM 인스턴스, big query, 버킷, cloud functions 위주로 사용하였습니다.
 여러 서버에서의 데이터 저장 및 분석을 위해 빌드 종료 후 필요한 데이터를 JSON 형태로 만들어
@@ -50,7 +50,7 @@ post로 cloud function에 전달하면, big query에 원하는 형태로 저장�
 ---
 
 [인프라 경험]<br>
-주로 이용하는 환경은 구글 클라우드와 openstack 으로 만들어진 서비스 이용하고 있습니다.
+- 주로 이용하는 환경은 구글 클라우드와 openstack 으로 만들어진 서비스 이용하고 있습니다.
 간단한 서버 생성부터 SVN, gitlab 서버 설치 및 배포까지 관리하고 있습니다.
 인프라 쪽 주 업무는 게임 개발, 게임 서버 환경 세팅입니다. 
 환경 구성부터 게임빌드, 배포(CI/CD)까지 하고 있습니다.
@@ -59,14 +59,14 @@ post로 cloud function에 전달하면, big query에 원하는 형태로 저장�
 ---
 
 [docker 나 k8s 사용경험]<br>
-docker의 경우는 java 기반의 WAS(Wep application server) CI/CD 만들었습니다.
+- docker의 경우는 java 기반의 WAS(Wep application server) CI/CD 만들었습니다.
 
-k8s는 grafana + Prometheus + alert manager 모니터링 환경을 k8s 와 helm 이용하여 자동화 R&D 하였다가, 중단한 상태입니다.
+- k8s는 grafana + Prometheus + alert manager 모니터링 환경을 k8s 와 helm 이용하여 자동화 R&D 하였다가, 중단한 상태입니다.
 
 ---
 
 [개발 경험]<br>
-24년 3월기준 게임 서벌 개발자도 겸직하고 있습니다. (Spring boot 기반)
+- 24년 3월기준 게임 서벌 개발자도 겸직하고 있습니다. (Spring boot 기반)
 
 ---
 
