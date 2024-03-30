@@ -42,7 +42,7 @@ SVN, gitlab, samba 서버 등이 여기에 해당합니다.
 
 - AWS의 경우 CDN만 사용하여, 배포용으로만 사용 중입니다.
 
-GCP 경우 DNS, VM 인스턴스, big query, 버킷, cloud functions 위주로 사용하였습니다.
+- GCP 경우 DNS, VM 인스턴스, big query, 버킷, cloud functions 위주로 사용하였습니다.
 여러 서버에서의 데이터 저장 및 분석을 위해 빌드 종료 후 필요한 데이터를 JSON 형태로 만들어
 post로 cloud function에 전달하면, big query에 원하는 형태로 저장하고, 
 해당 big query에 있는 데이터를 grafana에 연결하여 그래프로 시각화 사용하고 있습니다.
