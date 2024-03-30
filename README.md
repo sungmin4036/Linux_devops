@@ -79,6 +79,13 @@ post로 cloud function에 전달하면, big query에 원하는 형태로 저장�
 ![image](https://github.com/sungmin4036/Devops/assets/62640332/84e5c916-bde8-42a3-936e-9200a9eb991c)
 
 ---
+gitlab pipeline
+
+![image](https://github.com/sungmin4036/Devops/assets/62640332/8f880a70-4715-4972-83fe-b7aea95232c8)
+
+---
+
+jenkins pipeline
 
 ![image](https://github.com/sungmin4036/book/assets/62640332/272601d8-bd66-476a-97a2-f4c63c5de8f8)
 
