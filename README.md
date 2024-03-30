@@ -83,6 +83,119 @@ gitlab pipeline
 
 ![image](https://github.com/sungmin4036/Devops/assets/62640332/8f880a70-4715-4972-83fe-b7aea95232c8)
 
+```
+stages:          # List of stages for jobs, and their order of execution
+  - build-app
+  - build-docker-dev
+  - build-docker
+  - push-docker
+  - push-tw-docker
+  - deploy
+
+
+variables:
+    PROJECT_NAME : "tmp-test-project"
+    APP_NAME : "app-q1"
+    OUT_PATH : "./target"
+    OUT_FILE : "app_name-0.0.1-SNAPSHOT.jar"
+
+build:       # This job runs in the build stage, which runs first.
+  stage: build-app
+  variables:
+      APP_NAME : "$PROJECT_NAME"
+  script:
+    - echo "Maven Build Start "
+    - echo "$CI_COMMIT_BRANCH"
+    - pwd
+    - chmod -R +x tools
+    - mvn clean install -DskipTests=true
+    - echo "Build Finished !! please"
+  artifacts:
+    paths:
+      - ./target/$OUT_FILE
+  rules:
+    - if: $CI_COMMIT_TAG =~ /^(dev|fundev|cqa|pqa|prod|tw).20\d{6}.\d{1,2}/
+  tags:
+    - ac_funsdk01
+
+build-docker-dev:
+  stage: build-docker
+  variables:
+    BINARY : "funsdk-0.0.1-SNAPSHOT.jar"
+    DOCKER_BINARY: "app.jar"
+  script:
+    - pwd
+    - ls -al
+    - cp ./$OUT_PATH/$OUT_FILE ./script/$DOCKER_BINARY
+    - cd ./script
+    - docker build --no-cache -f Dockerfile-dev -t $APP_NAME .
+  rules:
+    - if: $CI_COMMIT_TAG =~ /^(dev|fundev).20\d{6}.\d{1,2}/
+  tags:
+    - ac_funsdk01
+
+build-docker:
+  stage: build-docker
+  variables:
+    BINARY : "app_name-0.0.1-SNAPSHOT.jar"
+    DOCKER_BINARY: "app.jar"
+  script:
+    - pwd
+    - ls -al
+    - cp ./$OUT_PATH/$OUT_FILE ./script/$DOCKER_BINARY
+    - cd ./script
+    - docker build --no-cache -f Dockerfile -t $APP_NAME .
+  rules:
+    - if: $CI_COMMIT_TAG =~ /^(cqa|pqa|prod|tw).20\d{6}.\d{1,2}/
+  tags:
+    - ac_funsdk01  
+
+push-docker:
+  stage: push-docker
+  script:
+    - pwd
+    - echo COMMIT TAG = $CI_COMMIT_TAG
+    - VER_PREFIX=`echo $CI_COMMIT_TAG | cut -d '.' -f1`
+    - echo $VER_PREFIX
+    - docker tag $APP_NAME harbor.nmn.io/funnypaw/$APP_NAME:$VER_PREFIX-latest
+    - docker tag $APP_NAME harbor.nmn.io/funnypaw/$APP_NAME:$VER_PREFIX-$CI_COMMIT_SHORT_SHA
+
+    - username=$(cat /home/nmfun/.config/robot.json | jq -r .name)
+    - password=$(cat /home/nmfun/.config/robot.json | jq -r .token)
+    - echo "$password" | docker login https://harbor.nmn.io --username "$username" --password-stdin 
+    - echo "harbor login success"
+
+    - docker push harbor.nmn.io/funnypaw/$APP_NAME:$VER_PREFIX-latest
+    - docker push harbor.nmn.io/funnypaw/$APP_NAME:$VER_PREFIX-$CI_COMMIT_SHORT_SHA
+  rules:
+    - if: $CI_COMMIT_TAG =~ /^(dev|fundev|cqa|pqa|prod).20\d{6}.\d{1,2}/
+  tags:
+    - ac_funsdk01
+
+
+push-tw-docker:
+  stage: push-tw-docker
+  script:
+    - pwd
+    - echo COMMIT TAG = $CI_COMMIT_TAG
+    - VER_PREFIX=`echo $CI_COMMIT_TAG | cut -d '.' -f1`
+    - echo $VER_PREFIX
+    - docker tag $APP_NAME harbor.nmn.io/arthdal/$APP_NAME:$VER_PREFIX-latest
+    - docker tag $APP_NAME harbor.nmn.io/arthdal/$APP_NAME:$VER_PREFIX-$CI_COMMIT_SHORT_SHA
+
+    - username=$(cat /home/nmfun/.config/robot-arthdal.json | jq -r .name)
+    - password=$(cat /home/nmfun/.config/robot-arthdal.json | jq -r .token)
+    - echo "$password" | docker login https://harbor.nmn.io --username "$username" --password-stdin 
+    - echo "harbor login success"
+
+    - docker push harbor.nmn.io/arthdal/$APP_NAME:$VER_PREFIX-latest
+    - docker push harbor.nmn.io/arthdal/$APP_NAME:$VER_PREFIX-$CI_COMMIT_SHORT_SHA
+  rules:
+    - if: $CI_COMMIT_TAG =~ /^(tw).20\d{6}.\d{1,2}/
+  tags:
+    - gitlab-runner-build01
+```
+
 ---
 
 jenkins pipeline
