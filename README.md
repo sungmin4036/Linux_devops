@@ -72,8 +72,7 @@ post로 cloud function에 전달하면, big query에 원하는 형태로 저장�
 
 [구축한 CI/CD 아키텍처]
 
-![image](https://github.com/sungmin4036/Devops/assets/62640332/7617401d-647a-4713-a460-9fce92be4e75)
-
+![image](https://github.com/sungmin4036/private_study/assets/62640332/a5550a48-7fa5-4b88-a5c8-229b063d10c2)
 
 ---
 
