@@ -7,13 +7,14 @@
 
 [- YAML문법](https://subicura.com/k8s/prepare/yaml.html#%E1%84%80%E1%85%B5%E1%84%87%E1%85%A9%E1%86%AB%E1%84%86%E1%85%AE%E1%86%AB%E1%84%87%E1%85%A5%E1%86%B8)<br>
 [- docker docs](https://docs.docker.com/)<br>
+[- debug 기초](https://hopeis.tistory.com/270)<br>
+[- devops 겉](https://www.devkuma.com/docs/category/dev-ops/)<br>
+[- cgroup 내용추가](https://tech.kakao.com/2020/06/29/cgroup-driver/)<br>
+[- k8s 기초](https://happycloud-lee.tistory.com/246)<br>
+[- k8s 무중단 배포 기본 아이디어](https://tech.kakao.com/2018/12/24/kubernetes-deploy/)<br>
+[- k8s etc 자세한 원리](https://tech.kakao.com/2021/12/20/kubernetes-etcd/)<br>
 [- kakao ent container deep1](https://tech.kakaoenterprise.com/154)<br>
 [- kakao ent container deep2](https://tech.kakaoenterprise.com/171)<br>
-[- debug 기초](https://hopeis.tistory.com/270)<br>
-[- k8s 기초](https://happycloud-lee.tistory.com/246)<br>
-[- devops 겉](https://www.devkuma.com/docs/category/dev-ops/)<br>
-[- k8s etc 자세한 원리](https://tech.kakao.com/2021/12/20/kubernetes-etcd/)<br>
-[- cgroup 내용추가](https://tech.kakao.com/2020/06/29/cgroup-driver/)<br>
 
 ---
 
