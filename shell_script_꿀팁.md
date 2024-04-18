@@ -5,11 +5,16 @@
 
 ㅁ 추가적으로 알면 좋은것
 
+잡지식(?)<br>
 [- YAML문법](https://subicura.com/k8s/prepare/yaml.html#%E1%84%80%E1%85%B5%E1%84%87%E1%85%A9%E1%86%AB%E1%84%86%E1%85%AE%E1%86%AB%E1%84%87%E1%85%A5%E1%86%B8)<br>
 [- docker docs](https://docs.docker.com/)<br>
 [- debug 기초](https://hopeis.tistory.com/270)<br>
-[- devops 겉](https://www.devkuma.com/docs/category/dev-ops/)<br>
+[- devops 기초 전체 정리 사이트](https://www.devkuma.com/docs/category/dev-ops/)<br>
+
+리눅스 kerna<br>
 [- cgroup 내용추가](https://tech.kakao.com/2020/06/29/cgroup-driver/)<br>
+
+k8s 및 docker 정보<br>
 [- k8s 기초](https://happycloud-lee.tistory.com/246)<br>
 [- k8s 무중단 배포 기본 아이디어](https://tech.kakao.com/2018/12/24/kubernetes-deploy/)<br>
 [- k8s etc 자세한 원리](https://tech.kakao.com/2021/12/20/kubernetes-etcd/)<br>
