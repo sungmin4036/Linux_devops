@@ -12,6 +12,7 @@
 [- debug 기초](https://hopeis.tistory.com/270)<br>
 [- k8s 기초](https://happycloud-lee.tistory.com/246)<br>
 [- devops 겉](https://www.devkuma.com/docs/category/dev-ops/)<br>
+[- k8s etc 자세한 원리](https://tech.kakao.com/2021/12/20/kubernetes-etcd/)<br>
 
 ---
 
