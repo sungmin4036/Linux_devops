@@ -11,7 +11,7 @@
 [- debug 기초](https://hopeis.tistory.com/270)<br>
 [- devops 기초 전체 정리 사이트](https://www.devkuma.com/docs/category/dev-ops/)<br>
 
-리눅스 kerna<br>
+리눅스 kernal<br>
 [- cgroup 내용추가](https://tech.kakao.com/2020/06/29/cgroup-driver/)<br>
 
 k8s 및 docker 정보<br>
