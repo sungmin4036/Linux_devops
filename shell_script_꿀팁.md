@@ -13,6 +13,7 @@
 [- k8s 기초](https://happycloud-lee.tistory.com/246)<br>
 [- devops 겉](https://www.devkuma.com/docs/category/dev-ops/)<br>
 [- k8s etc 자세한 원리](https://tech.kakao.com/2021/12/20/kubernetes-etcd/)<br>
+[- cgroup 내용추가](https://tech.kakao.com/2020/06/29/cgroup-driver/)<br>
 
 ---
 
